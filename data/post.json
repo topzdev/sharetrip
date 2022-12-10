@@ -1,0 +1,162 @@
+[
+	{
+		"title": "The Architectural Place in Moscow, Russia",
+		"location": "Moscow, Russia",
+		"rating_count": 5,
+		"like_count": 26,
+		"image": "post-1",
+		"user": {
+			"id": "11",
+			"firstname": "Dexter",
+			"lastname": "Calapan",
+			"profile": "profile-11"
+		},
+		"created_at": "12-29-2022"
+	},
+	{
+		"title": "It’s time to show some love for Nagano",
+		"location": "Nagano, Japan",
+		"rating_count": 5,
+		"like_count": 26,
+		"image": "post-2",
+		"user": {
+			"id": "12",
+			"firstname": "Rafael",
+			"lastname": "Isla",
+			"profile": "profile-12"
+		},
+		"created_at": "01-01-2023"
+	},
+	{
+		"title": "Hello, Sagada! 💙 First of 2020",
+		"location": "Sagada, Philippines",
+		"rating_count": 5,
+		"like_count": 26,
+		"image": "post-3",
+		"user": {
+			"id": "13",
+			"firstname": "Diana Castro",
+			"lastname": "De Jesus",
+			"profile": "profile-13"
+		},
+		"created_at": "01-01-2023"
+	},
+	{
+		"title": "Multiple Country In one travel",
+		"location": [
+			"Vietnam",
+			"Cambodia",
+			"Malaysia",
+			"Thailand"
+		],
+		"rating_count": 5,
+		"like_count": 26,
+		"image": "post-4",
+		"user": {
+			"id": "14",
+			"firstname": "Raff",
+			"lastname": "Abad",
+			"profile": "profile-14"
+		},
+		"created_at": "01-01-2023"
+	},
+	{
+		"title": "7-Day Japan FREE Must-Visit tourist spots",
+		"location": [
+			"Osaka",
+			"Kyoto",
+			"Tokyo"
+		],
+		"rating_count": 5,
+		"like_count": 26,
+		"image": "post-5",
+		"user": {
+			"id": "15",
+			"firstname": "Nico",
+			"lastname": "Fernandez",
+			"profile": "profile-15"
+		},
+		"created_at": "01-01-2023"
+	},
+	{
+		"title": "Happy Hut Retreat of ElZamba! ",
+		"location": "Iba Zambales, Philippines",
+		"rating_count": 5,
+		"like_count": 26,
+		"image": "post-6",
+		"user": {
+			"id": "16",
+			"firstname": "Mich",
+			"lastname": "Villanueva",
+			"profile": "profile-16"
+		},
+		"created_at": "01-01-2023"
+	},
+	{
+		"title": "Six Country, Six Days Travel",
+		"location": [
+			"Singapore",
+			"Malaysia",
+			"Indonesia",
+			"Vietnam",
+			"Hong Kong"
+		],
+		"rating_count": 5,
+		"like_count": 26,
+		"image": "post-7",
+		"user": {
+			"id": "17",
+			"firstname": "Richard Rafael",
+			"lastname": "Isla",
+			"profile": "profile-17"
+		},
+		"created_at": "01-01-2023"
+	},
+	{
+		"title": "Korea is the place I would definitely go back to. 🥳",
+		"location": [
+			"Seoul",
+			"Gangnam",
+			"Busan",
+			"South Korea"
+		],
+		"rating_count": 5,
+		"like_count": 26,
+		"image": "post-8",
+		"user": {
+			"id": "18",
+			"firstname": "Sarah",
+			"lastname": "Enriquez",
+			"profile": "profile-18"
+		},
+		"created_at": "01-01-2023"
+	},
+	{
+		"title": "Beautiful island in Zamboanga Sibugay!",
+		"location": "Zamboanga Sibugay Philippines",
+		"rating_count": 5,
+		"like_count": 26,
+		"image": "post-9",
+		"user": {
+			"id": "19",
+			"firstname": "Therine",
+			"lastname": "Diquit",
+			"profile": "profile-19"
+		},
+		"created_at": "01-01-2023"
+	},
+	{
+		"title": "Beach Chaser Series in Philippine Islands",
+		"location": "Romblon, Boracay Philippines",
+		"rating_count": 5,
+		"like_count": 26,
+		"image": "post-10",
+		"user": {
+			"id": "20",
+			"firstname": "Kat",
+			"lastname": "Serrano",
+			"profile": "profile-20"
+		},
+		"created_at": "01-01-2023"
+	}
+]
