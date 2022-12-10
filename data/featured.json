@@ -1,0 +1,122 @@
+[
+	{
+		"id": "1",
+		"location": "El Nido Palawan, Philippines",
+		"title": "The hidden Island of the Philippines",
+		"user": {
+			"firstname": "Christopher",
+			"lastname": "Lugod",
+			"profile": "profile-1.jpg"
+		},
+		"created_at": "12-9-2022",
+		"image": "location-1.jpg"
+	},
+	{
+		"id": "2",
+		"location": "Loboc River Bohol, Philippines",
+		"image": "location-2.jpg",
+		"title": "Cruising Down Loboc River",
+		"user": {
+			"firstname": "John",
+			"lastname": "Doe",
+			"profile": "profile-2.jpg"
+		},
+		"created_at": "12-9-2022"
+	},
+	{
+		"id": "3",
+		"location": "Boracay, Philippines",
+		"image": "location-3.jpg",
+		"title": "Blessed with a long stretch of powdery white sand beach",
+		"user": {
+			"firstname": "Christian",
+			"lastname": "Lugod",
+			"profile": "profile-3.jpg"
+		},
+		"created_at": "12-9-2022"
+	},
+	{
+		"id": "4",
+		"location": "Siargao, Philippines",
+		"image": "location-4.jpg",
+		"title": "Tropical island in the southern Philippines",
+		"user": {
+			"firstname": "Sebastion",
+			"lastname": "Lavarias",
+			"profile": "profile-4.jpg"
+		},
+		"created_at": "12-9-2022"
+	},
+	{
+		"id": "5",
+		"location": "Batanes, Philippines",
+		"image": "location-5.jpg",
+		"title": "Home of the Winds",
+		"user": {
+			"firstname": "Angelo",
+			"lastname": "Lacap",
+			"profile": "profile-5.jpg"
+		},
+		"created_at": "12-9-2022"
+	},
+	{
+		"id": "6",
+		"location": "Baganga, Davao Oriental, Philippines",
+		"image": "location-6.jpg",
+		"title": "Largest resort city or island",
+		"user": {
+			"firstname": "Fritz",
+			"lastname": "Cuaresma",
+			"profile": "profile-6.jpg"
+		},
+		"created_at": "12-9-2022"
+	},
+	{
+		"id": "7",
+		"location": "Kawasan Falls, Badian, Cebu, Philippines",
+		"title": "Sunrise at Kawasan",
+		"image": "location-7.jpg",
+		"user": {
+			"firstname": "Charity",
+			"lastname": "Lugod",
+			"profile": "profile-7.jpg"
+		},
+		"created_at": "12-9-2022"
+	},
+	{
+		"id": "8",
+		"location": "Tagaytay, Cavite, Philippines",
+		"title": "The Taal Volcano and City of All Occasions",
+		"image": "location-8.jpg",
+		"user": {
+			"firstname": "Cedric",
+			"lastname": "Lugod",
+			"profile": "profile-8.jpg"
+		},
+		"created_at": "12-9-2022"
+	},
+	{
+		"id": "9",
+		"location": "Vigan, Ilocos Sur, Philippines",
+		"title": "Spanish Colonial fairy tale of dark-wood mansions",
+		"image": "location-9.jpg",
+		"user": {
+			"firstname": "Cindy",
+			"lastname": "Lugod",
+			"profile": "profile-9.jpg"
+		},
+		"created_at": "12-9-2022"
+	},
+	{
+		"id": "10",
+		"location": "Sagada Rice Terraces, Sagada, Philippines",
+		"title": "Rice Terraces of the Philippines",
+		"image": "location-10.jpg",
+		"user": {
+			"firstname": "Cresilda",
+			"lastname": "Lugod",
+			"profile": "profile-10.jpg"
+		},
+		"created_at": "12-9-2022"
+	}
+]
