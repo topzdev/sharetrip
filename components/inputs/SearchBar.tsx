@@ -1,16 +1,14 @@
-"use client";
-
 import React, { useState } from "react";
 
 const SearchBar = () => {
   const [search, setSearch] = useState("");
 
   return (
-    <div className="bg-white opacity-60 rounded-full w-[550px] flex py-4 px-4 select-none relative">
+    <div className="bg-white opacity-60 rounded-full w-[550px] flex py-4 px-4 select-none relative active:opacity-80 focus-within:opacity-100 ease-in duration-300">
       <input
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="bg-transparent w-full h-full outline-none ml-2"
+        className="bg-transparent w-full h-full outline-none ml-1"
         type="text"
       />
       {search === "" && (

@@ -1,20 +1,23 @@
-import React, { FunctionComponent, ReactElement, useState } from "react";
+import dayjs from "dayjs";
 import Image from "next/image";
+import { FunctionComponent, useRef, useState } from "react";
+import { Autoplay, Pagination, EffectFade } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper";
+import { Swiper as SwiperMain } from "swiper/types";
 import data from "../../data/featured.json";
+
 import "swiper/css";
 import "swiper/css/autoplay";
-import dayjs from "dayjs";
-import {
-  SwiperEvents,
-  SwiperOptions,
-  Swiper as SwiperMain,
-} from "swiper/types";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 
 type CarouselItemProps = {
   data: typeof data[0];
   idx: number;
+};
+
+type CarouselInformtionProps = {
+  data: typeof data[0];
 };
 
 const CarouselItem: FunctionComponent<CarouselItemProps> = ({ idx, data }) => {
@@ -25,13 +28,11 @@ const CarouselItem: FunctionComponent<CarouselItemProps> = ({ idx, data }) => {
       src={`/images/locations/${data.image}`}
       width={1920}
       height={1080}
+      loading={idx !== 1 ? "lazy" : "eager"}
       alt={data.title}></Image>
   );
 };
 
-type CarouselInformtionProps = {
-  data: typeof data[0];
-};
 const CarouselInformtion: FunctionComponent<CarouselInformtionProps> = ({
   data,
 }) => {
@@ -99,6 +100,12 @@ const CarouselBackdrop = () => {
 
 const HomepageCarousel = () => {
   const [current, setCurrent] = useState(data[0]);
+  const modules = [Autoplay, Pagination, EffectFade];
+  const autoplayOpt = {
+    delay: 10000,
+  };
+
+  const slidesPerView = 1;
 
   const onSlideChange = (e: SwiperMain) => {
     console.log(e.realIndex);
@@ -106,15 +113,21 @@ const HomepageCarousel = () => {
   };
 
   return (
-    <div className="h-screen w-screen overflow-hidden relative">
+    <div className="homepage-carousel h-screen w-screen overflow-hidden relative">
       <Swiper
         className="h-full w-full !absolute z-10"
         loop
-        modules={[Autoplay]}
-        autoplay={{
-          delay: 2000,
+        pagination={{
+          el: ".homepage-carousel-pagination",
+          type: "bullets",
+
+          clickable: true,
         }}
-        slidesPerView={1}
+        effect="fade"
+        fadeEffect={{ crossFade: true }}
+        modules={modules}
+        autoplay={autoplayOpt}
+        slidesPerView={slidesPerView}
         onSlideChange={onSlideChange}>
         {data.map((item, idx) => (
           <SwiperSlide className="h-full w-full relative" key={item.id}>
@@ -124,6 +137,7 @@ const HomepageCarousel = () => {
       </Swiper>
       <CarouselBackdrop />
       <CarouselInformtion data={current} />
+      <div className="homepage-carousel-pagination"></div>
     </div>
   );
 };

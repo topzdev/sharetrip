@@ -13,7 +13,7 @@ const curentUser = {
 
 const AppNavbar = () => {
   return (
-    <div className="flex items-center fixed z-10 w-screen px-8 py-5">
+    <div className="flex items-center fixed z-30 w-screen px-8 py-5">
       <Link className="mr-8" href={"/"}>
         <AppLogo />
       </Link>

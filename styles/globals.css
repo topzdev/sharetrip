@@ -2,3 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+	.homepage-carousel .swiper-pagination-bullet {
+		@apply bg-white opacity-50 h-3 w-3
+	}
+
+	.homepage-carousel .swiper-pagination-bullet-active {
+		@apply bg-primary opacity-100
+	}
+
+	.homepage-carousel-pagination {
+		@apply absolute !left-auto !right-[10%] !top-[50%] -translate-y-1/2 -translate-x-1/2 flex flex-col gap-4 !z-[9999] !w-auto justify-center
+	}
+}
