@@ -4,6 +4,8 @@ import React, { ReactElement } from "react";
 import HomepageCarousel from "@/components/carousels/HomepageCarousel";
 import DefautlLayout from "@/components/layout/layout";
 import PostsSection from "@/components/sections/PostsSection";
+import posts from "@/data/post.json";
+import SignUpBanners from "@/components/banners/SignUpBanners";
 
 export default function Home() {
   return (
@@ -15,7 +17,13 @@ export default function Home() {
       </Head>
       <HomepageCarousel />
       <div className="container mx-auto">
-        <PostsSection />
+        <PostsSection title="Popular" items={posts} />
+      </div>
+
+      <SignUpBanners />
+
+      <div className="container mx-auto">
+        <PostsSection title="Recently Added" items={posts} />
       </div>
     </>
   );

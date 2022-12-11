@@ -113,7 +113,9 @@ const HomepageCarousel = () => {
   };
 
   return (
-    <div className="homepage-carousel h-screen w-full overflow-hidden relative">
+    <div
+      className="homepage-carousel h-screen w-full overflow-hidden relative"
+      id="homepageCarousel">
       <Swiper
         className="h-full w-full !absolute z-10"
         loop

@@ -168,5 +168,35 @@
 			"profile": "profile-20.jpg"
 		},
 		"created_at": "01-01-2023"
+	},
+	{
+		"title": "The Architectural Place in Moscow, Russia",
+		"location": "Moscow, Russia",
+		"slug": "the-architectural-place-in-moscow-russia2",
+		"rating_count": 5,
+		"like_count": 26,
+		"image": "post-1.jpg",
+		"user": {
+			"id": "11",
+			"firstname": "Dexter",
+			"lastname": "Calapan",
+			"profile": "profile-1.jpg"
+		},
+		"created_at": "12-29-2022"
+	},
+	{
+		"title": "It’s time to show some love for Nagano",
+		"slug": "its-time-to-show-some-love-for-nagano2",
+		"location": "Nagano, Japan",
+		"rating_count": 5,
+		"like_count": 26,
+		"image": "post-2.jpg",
+		"user": {
+			"id": "12",
+			"firstname": "Rafael",
+			"lastname": "Isla",
+			"profile": "profile-12.jpg"
+		},
+		"created_at": "01-01-2023"
 	}
 ]
