@@ -1,8 +1,9 @@
 import Head from "next/head";
 import Image from "next/image";
 import React, { ReactElement } from "react";
-import HomepageCarousel from "../components/carousels/HomepageCarousel";
-import DefautlLayout from "../components/layout/layout";
+import HomepageCarousel from "@/components/carousels/HomepageCarousel";
+import DefautlLayout from "@/components/layout/layout";
+import PostsSection from "@/components/sections/PostsSection";
 
 export default function Home() {
   return (
@@ -13,6 +14,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomepageCarousel />
+      <div className="container mx-auto">
+        <PostsSection />
+      </div>
     </>
   );
 }
