@@ -4,7 +4,7 @@ import React, { ReactElement } from "react";
 import HomepageCarousel from "@/components/carousels/HomepageCarousel";
 import DefautlLayout from "@/components/layout/layout";
 import PostsSection from "@/components/sections/PostsSection";
-import posts from "@/data/post.json";
+import posts from "@/data/posts.json";
 import SignUpBanners from "@/components/banners/SignUpBanners";
 
 export default function Home() {

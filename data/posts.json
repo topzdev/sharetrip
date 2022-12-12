@@ -1,0 +1,202 @@
+[
+	{
+		"title": "The Architectural Place in Moscow, Russia",
+		"location": "Moscow, Russia",
+		"slug": "the-architectural-place-in-moscow-russia",
+		"rating_count": 5,
+		"like_count": 26,
+		"image": "post-1.jpg",
+		"user": {
+			"id": "11",
+			"firstname": "Dexter",
+			"lastname": "Calapan",
+			"profile": "profile-1.jpg"
+		},
+		"created_at": "12-29-2022"
+	},
+	{
+		"title": "It’s time to show some love for Nagano",
+		"slug": "its-time-to-show-some-love-for-nagano",
+		"location": "Nagano, Japan",
+		"rating_count": 5,
+		"like_count": 26,
+		"image": "post-2.jpg",
+		"user": {
+			"id": "12",
+			"firstname": "Rafael",
+			"lastname": "Isla",
+			"profile": "profile-12.jpg"
+		},
+		"created_at": "01-01-2023"
+	},
+	{
+		"title": "Hello, Sagada! 💙 First of 2020",
+		"slug": "hello-sagada-first-of-2020",
+		"location": "Sagada, Philippines",
+		"rating_count": 5,
+		"like_count": 26,
+		"image": "post-3.jpg",
+		"user": {
+			"id": "13",
+			"firstname": "Diana Castro",
+			"lastname": "De Jesus",
+			"profile": "profile-13.jpg"
+		},
+		"created_at": "01-01-2023"
+	},
+	{
+		"title": "Multiple Country In one travel",
+		"slug": "multiple-country-in-one-travel",
+		"location": [
+			"Vietnam",
+			"Cambodia",
+			"Malaysia",
+			"Thailand"
+		],
+		"rating_count": 5,
+		"like_count": 26,
+		"image": "post-4.jpg",
+		"user": {
+			"id": "14",
+			"firstname": "Raff",
+			"lastname": "Abad",
+			"profile": "profile-14.jpg"
+		},
+		"created_at": "01-01-2023"
+	},
+	{
+		"title": "7-Day Japan FREE Must-Visit tourist spots",
+		"slug": "7-Day-japan-free-must-visit-tourist-spots",
+		"location": [
+			"Osaka",
+			"Kyoto",
+			"Tokyo"
+		],
+		"rating_count": 5,
+		"like_count": 26,
+		"image": "post-5.jpg",
+		"user": {
+			"id": "15",
+			"firstname": "Nico",
+			"lastname": "Fernandez",
+			"profile": "profile-15.jpg"
+		},
+		"created_at": "01-01-2023"
+	},
+	{
+		"title": "Happy Hut Retreat of ElZamba! ",
+		"slug": "happy-hut-retreat-of-elzamba",
+		"location": "Iba Zambales, Philippines",
+		"rating_count": 5,
+		"like_count": 26,
+		"image": "post-6.jpg",
+		"user": {
+			"id": "16",
+			"firstname": "Mich",
+			"lastname": "Villanueva",
+			"profile": "profile-16.jpg"
+		},
+		"created_at": "01-01-2023"
+	},
+	{
+		"title": "Six Country, Six Days Travel",
+		"slug": "six-country-six-days-travel",
+		"location": [
+			"Singapore",
+			"Malaysia",
+			"Indonesia",
+			"Vietnam",
+			"Hong Kong"
+		],
+		"rating_count": 5,
+		"like_count": 26,
+		"image": "post-7.jpg",
+		"user": {
+			"id": "17",
+			"firstname": "Richard Rafael",
+			"lastname": "Isla",
+			"profile": "profile-17.jpg"
+		},
+		"created_at": "01-01-2023"
+	},
+	{
+		"title": "Korea is the place I would definitely go back to. 🥳",
+		"slug": "korea-is-the-place-i-would-definitely-go-back-to",
+		"location": [
+			"Seoul",
+			"Gangnam",
+			"Busan",
+			"South Korea"
+		],
+		"rating_count": 5,
+		"like_count": 26,
+		"image": "post-8.jpg",
+		"user": {
+			"id": "18",
+			"firstname": "Sarah",
+			"lastname": "Enriquez",
+			"profile": "profile-18.jpg"
+		},
+		"created_at": "01-01-2023"
+	},
+	{
+		"title": "Beautiful island in Zamboanga Sibugay!",
+		"slug": "beautiful-island-in-zamboanga-sibugay",
+		"location": "Zamboanga Sibugay Philippines",
+		"rating_count": 5,
+		"like_count": 26,
+		"image": "post-9.jpg",
+		"user": {
+			"id": "19",
+			"firstname": "Therine",
+			"lastname": "Diquit",
+			"profile": "profile-19.jpg"
+		},
+		"created_at": "01-01-2023"
+	},
+	{
+		"title": "Beach Chaser Series in Philippine Islands",
+		"slug": "beach-chaser-series-in-philippine-islands",
+		"location": "Romblon, Boracay Philippines",
+		"rating_count": 5,
+		"like_count": 26,
+		"image": "post-10.jpg",
+		"user": {
+			"id": "20",
+			"firstname": "Kat",
+			"lastname": "Serrano",
+			"profile": "profile-20.jpg"
+		},
+		"created_at": "01-01-2023"
+	},
+	{
+		"title": "The Architectural Place in Moscow, Russia",
+		"location": "Moscow, Russia",
+		"slug": "the-architectural-place-in-moscow-russia2",
+		"rating_count": 5,
+		"like_count": 26,
+		"image": "post-1.jpg",
+		"user": {
+			"id": "11",
+			"firstname": "Dexter",
+			"lastname": "Calapan",
+			"profile": "profile-1.jpg"
+		},
+		"created_at": "12-29-2022"
+	},
+	{
+		"title": "It’s time to show some love for Nagano",
+		"slug": "its-time-to-show-some-love-for-nagano2",
+		"location": "Nagano, Japan",
+		"rating_count": 5,
+		"like_count": 26,
+		"image": "post-2.jpg",
+		"user": {
+			"id": "12",
+			"firstname": "Rafael",
+			"lastname": "Isla",
+			"profile": "profile-12.jpg"
+		},
+		"created_at": "01-01-2023"
+	}
+]

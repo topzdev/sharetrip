@@ -1,202 +1,109 @@
-[
-	{
-		"title": "The Architectural Place in Moscow, Russia",
-		"location": "Moscow, Russia",
-		"slug": "the-architectural-place-in-moscow-russia",
-		"rating_count": 5,
-		"like_count": 26,
-		"image": "post-1.jpg",
-		"user": {
-			"id": "11",
-			"firstname": "Dexter",
-			"lastname": "Calapan",
-			"profile": "profile-1.jpg"
+{
+	"id": 1,
+	"slug": "the-architectural-place-in-moscow-russia",
+	"title": "The Architectural Place in Moscow,Russia",
+	"location": [
+		"St Petersburg",
+		"Moscow",
+		"Sergiev Posad",
+		"Russia"
+	],
+	"statistics": {
+		"review": {
+			"rate": 4.9,
+			"count": 395
 		},
-		"created_at": "12-29-2022"
+		"itinerary": {
+			"days": 3
+		},
+		"spent": {
+			"amount": 40000,
+			"currency": "php"
+		}
 	},
-	{
-		"title": "It’s time to show some love for Nagano",
-		"slug": "its-time-to-show-some-love-for-nagano",
-		"location": "Nagano, Japan",
-		"rating_count": 5,
-		"like_count": 26,
-		"image": "post-2.jpg",
-		"user": {
-			"id": "12",
-			"firstname": "Rafael",
-			"lastname": "Isla",
-			"profile": "profile-12.jpg"
+	"images": [
+		"image-1.jpg",
+		"image-2.jpg",
+		"image-3.jpg",
+		"image-4.jpg",
+		"image-5.jpg",
+		"image-6.jpg"
+	],
+	"intro": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+	"travel_timeline": [
+		{
+			"position": 1,
+			"title": "The Saint Petersburg City",
+			"location": "Saint Petersburg, Russia",
+			"short_description": "Regarded as among the most beautiful cities in Europe, the former capital will definitely leave you in awe.",
+			"content": "Regarded as among the most beautiful cities in Europe, the former capital will definitely leave you in awe",
+			"image": "image-1.jpg"
 		},
-		"created_at": "01-01-2023"
+		{
+			"position": 2,
+			"title": "The Saint Petersburg City",
+			"location": "Saint Petersburg, Russia",
+			"short_description": "Regarded as among the most beautiful cities in Europe, the former capital will definitely leave you in awe.",
+			"content": "Regarded as among the most beautiful cities in Europe, the former capital will definitely leave you in awe",
+			"image": "image-1.jpg"
+		},
+		{
+			"position": 3,
+			"title": "The Saint Petersburg City",
+			"location": "Saint Petersburg, Russia",
+			"short_description": "Regarded as among the most beautiful cities in Europe, the former capital will definitely leave you in awe.",
+			"content": "Regarded as among the most beautiful cities in Europe, the former capital will definitely leave you in awe",
+			"image": "image-1.jpg"
+		}
+	],
+	"keep_in_minds": [
+		{
+			"title": "VISA and E-VISA",
+			"content": "It's easy to get a tourist visa for Russia. Simply submit your documents at the Russian Embassy in Rada. Below are the needed documents."
+		},
+		{
+			"title": "Important Reminders",
+			"content": "From my experience, I had to transfer to Terminal B as the second leg of my flight to Russia is domestic. (BTW, I got the visa sticker.) "
+		},
+		{
+			"title": "When In Russia",
+			"content": "Here are some things that you need to know when you are already in Russia. Here are some things that you need to know when you are already in Russia."
+		}
+	],
+	"user": {
+		"firstname": "Dexter",
+		"lastname": "Calapan",
+		"profile": "profile-2.jpg",
+		"joined_date": "12-29-2022",
+		"followers": 102,
+		"introduction": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit..."
 	},
-	{
-		"title": "Hello, Sagada! 💙 First of 2020",
-		"slug": "hello-sagada-first-of-2020",
-		"location": "Sagada, Philippines",
-		"rating_count": 5,
-		"like_count": 26,
-		"image": "post-3.jpg",
-		"user": {
-			"id": "13",
-			"firstname": "Diana Castro",
-			"lastname": "De Jesus",
-			"profile": "profile-13.jpg"
+	"comments": [
+		{
+			"user": {
+				"firstname": "Dexter",
+				"lastname": "Calapan",
+				"profile": "profile-3.jpg"
+			},
+			"title": "",
+			"content": "love every single one of your photos - finally a travel-centric post showcasing the destinations’ beautiful attractions without faces hugging every corner of the frame that sometimes you’d wonder if they wanted to show the place or their faces instead. the details are even better. thank you for sharing",
+			"statistics": {
+				"likes": 5
+			},
+			"created_at": "01-02-2022"
 		},
-		"created_at": "01-01-2023"
-	},
-	{
-		"title": "Multiple Country In one travel",
-		"slug": "multiple-country-in-one-travel",
-		"location": [
-			"Vietnam",
-			"Cambodia",
-			"Malaysia",
-			"Thailand"
-		],
-		"rating_count": 5,
-		"like_count": 26,
-		"image": "post-4.jpg",
-		"user": {
-			"id": "14",
-			"firstname": "Raff",
-			"lastname": "Abad",
-			"profile": "profile-14.jpg"
-		},
-		"created_at": "01-01-2023"
-	},
-	{
-		"title": "7-Day Japan FREE Must-Visit tourist spots",
-		"slug": "7-Day-japan-free-must-visit-tourist-spots",
-		"location": [
-			"Osaka",
-			"Kyoto",
-			"Tokyo"
-		],
-		"rating_count": 5,
-		"like_count": 26,
-		"image": "post-5.jpg",
-		"user": {
-			"id": "15",
-			"firstname": "Nico",
-			"lastname": "Fernandez",
-			"profile": "profile-15.jpg"
-		},
-		"created_at": "01-01-2023"
-	},
-	{
-		"title": "Happy Hut Retreat of ElZamba! ",
-		"slug": "happy-hut-retreat-of-elzamba",
-		"location": "Iba Zambales, Philippines",
-		"rating_count": 5,
-		"like_count": 26,
-		"image": "post-6.jpg",
-		"user": {
-			"id": "16",
-			"firstname": "Mich",
-			"lastname": "Villanueva",
-			"profile": "profile-16.jpg"
-		},
-		"created_at": "01-01-2023"
-	},
-	{
-		"title": "Six Country, Six Days Travel",
-		"slug": "six-country-six-days-travel",
-		"location": [
-			"Singapore",
-			"Malaysia",
-			"Indonesia",
-			"Vietnam",
-			"Hong Kong"
-		],
-		"rating_count": 5,
-		"like_count": 26,
-		"image": "post-7.jpg",
-		"user": {
-			"id": "17",
-			"firstname": "Richard Rafael",
-			"lastname": "Isla",
-			"profile": "profile-17.jpg"
-		},
-		"created_at": "01-01-2023"
-	},
-	{
-		"title": "Korea is the place I would definitely go back to. 🥳",
-		"slug": "korea-is-the-place-i-would-definitely-go-back-to",
-		"location": [
-			"Seoul",
-			"Gangnam",
-			"Busan",
-			"South Korea"
-		],
-		"rating_count": 5,
-		"like_count": 26,
-		"image": "post-8.jpg",
-		"user": {
-			"id": "18",
-			"firstname": "Sarah",
-			"lastname": "Enriquez",
-			"profile": "profile-18.jpg"
-		},
-		"created_at": "01-01-2023"
-	},
-	{
-		"title": "Beautiful island in Zamboanga Sibugay!",
-		"slug": "beautiful-island-in-zamboanga-sibugay",
-		"location": "Zamboanga Sibugay Philippines",
-		"rating_count": 5,
-		"like_count": 26,
-		"image": "post-9.jpg",
-		"user": {
-			"id": "19",
-			"firstname": "Therine",
-			"lastname": "Diquit",
-			"profile": "profile-19.jpg"
-		},
-		"created_at": "01-01-2023"
-	},
-	{
-		"title": "Beach Chaser Series in Philippine Islands",
-		"slug": "beach-chaser-series-in-philippine-islands",
-		"location": "Romblon, Boracay Philippines",
-		"rating_count": 5,
-		"like_count": 26,
-		"image": "post-10.jpg",
-		"user": {
-			"id": "20",
-			"firstname": "Kat",
-			"lastname": "Serrano",
-			"profile": "profile-20.jpg"
-		},
-		"created_at": "01-01-2023"
-	},
-	{
-		"title": "The Architectural Place in Moscow, Russia",
-		"location": "Moscow, Russia",
-		"slug": "the-architectural-place-in-moscow-russia2",
-		"rating_count": 5,
-		"like_count": 26,
-		"image": "post-1.jpg",
-		"user": {
-			"id": "11",
-			"firstname": "Dexter",
-			"lastname": "Calapan",
-			"profile": "profile-1.jpg"
-		},
-		"created_at": "12-29-2022"
-	},
-	{
-		"title": "It’s time to show some love for Nagano",
-		"slug": "its-time-to-show-some-love-for-nagano2",
-		"location": "Nagano, Japan",
-		"rating_count": 5,
-		"like_count": 26,
-		"image": "post-2.jpg",
-		"user": {
-			"id": "12",
-			"firstname": "Rafael",
-			"lastname": "Isla",
-			"profile": "profile-12.jpg"
-		},
-		"created_at": "01-01-2023"
-	}
-]
+		{
+			"user": {
+				"firstname": "Htiaf",
+				"lastname": "Diugil",
+				"profile": "profile-12.jpg"
+			},
+			"title": "",
+			"content": "if you don’t mind, what do you mean travel voucher?. and ask ko nadin since i’m from dubai less hassle na kaya ang kumuha ng e-visa? Thank you 😊",
+			"statistics": {
+				"likes": 5
+			},
+			"created_at": "01-02-2022"
+		}
+	]
+}

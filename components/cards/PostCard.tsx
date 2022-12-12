@@ -15,7 +15,7 @@ const PostCard: FunctionComponent<PostCardProps> = ({ data }) => {
   const postedDate = dayjs(data.created_at).format("MMMM DD, YYYY");
   const postImage = `/images/posts/${data.image}`;
   const userProfile = `/images/profiles/${user.profile}`;
-  const postLink = `/posts/${data.slug}`;
+  const postLink = `/post/${data.slug}`;
   const userLink = `/wanderer/${user.id}`;
   const postTitle = data.title;
   const likeCount = data.like_count;
