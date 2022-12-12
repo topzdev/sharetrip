@@ -1,13 +1,19 @@
+import { DetailedPost } from "@/types/data";
 import create from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
 interface PostState {
-  post: number;
+  post: DetailedPost | null;
+  setPost: (data: DetailedPost) => void;
 }
 
 export const usePostStore = create<PostState>()(
   devtools((set) => ({
-    post: 0,
-    setPost() {},
+    post: null,
+    setPost: (data) => {
+      set({
+        post: data,
+      });
+    },
   }))
 );
