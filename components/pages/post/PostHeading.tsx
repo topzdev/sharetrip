@@ -10,12 +10,12 @@ import PostHeadingInformation from "./heading/PostHeadingInformation";
 type Props = {};
 
 const PostHeading: React.FC<Props> = ({}) => {
+  const router = useRouter();
+  const slug = router.query.slug as string;
   const { data, error, isLoading } = useQuery<DetailedPost>("post", () =>
     getPost(slug)
   );
   const [appbarHeight, setAppbarHeight] = useState(91);
-  const router = useRouter();
-  const slug = router.query.slug as string;
 
   if (isLoading) return <>loading...</>;
   if (error) return <>error</>;

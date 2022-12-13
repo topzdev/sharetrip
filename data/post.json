@@ -32,6 +32,7 @@
 	"intro": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
 	"travel_timeline": [
 		{
+			"id": 1,
 			"position": 1,
 			"title": "The Saint Petersburg City",
 			"location": "Saint Petersburg, Russia",
@@ -40,20 +41,22 @@
 			"image": "image-1.jpg"
 		},
 		{
+			"id": 2,
 			"position": 2,
-			"title": "The Saint Petersburg City",
-			"location": "Saint Petersburg, Russia",
-			"short_description": "Regarded as among the most beautiful cities in Europe, the former capital will definitely leave you in awe.",
+			"title": "Moscow, Russia",
+			"location": "Moscow’s Best",
+			"short_description": "I'm thrilled to actually see how different Moscow is from Saint Petersburg.",
 			"content": "Regarded as among the most beautiful cities in Europe, the former capital will definitely leave you in awe",
-			"image": "image-1.jpg"
+			"image": "image-2.jpg"
 		},
 		{
+			"id": 3,
 			"position": 3,
-			"title": "The Saint Petersburg City",
-			"location": "Saint Petersburg, Russia",
-			"short_description": "Regarded as among the most beautiful cities in Europe, the former capital will definitely leave you in awe.",
+			"title": "Last but the best of all",
+			"location": "Sergiev Posad, Russia",
+			"short_description": "One of the Golden Ring cities. Definitely a perfect side trip FROM Moscow. Suburban Trains from Yaroslavskiy Railway Station run every 20 - 30 minutes.",
 			"content": "Regarded as among the most beautiful cities in Europe, the former capital will definitely leave you in awe",
-			"image": "image-1.jpg"
+			"image": "image-3.jpg"
 		}
 	],
 	"keep_in_minds": [

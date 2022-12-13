@@ -40,7 +40,7 @@ const PostPage = ({
       </Head>
       <PostHeading />
 
-      <div className="w-[1280px] mx-auto">
+      <div className="w-[1000px] mx-auto">
         <PostIntroduction />
         <PostTravelTimeline />
       </div>

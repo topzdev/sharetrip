@@ -1,3 +1,5 @@
+import { PostTravelTimeline } from "./travelTimeline";
+
 export type DetailedPost = {
   id: number;
   slug: string;
@@ -18,14 +20,7 @@ export type DetailedPost = {
   };
   images: string[];
   intro: string;
-  travel_timeline: {
-    position: number;
-    title: string;
-    location: string;
-    short_description: string;
-    content: string;
-    image: string;
-  }[];
+  travel_timeline: PostTravelTimeline[];
   keep_in_minds: {
     title: string;
     content: string;
