@@ -13,6 +13,7 @@ const PostHeadingGallery: React.FC<PostHeadingGalleryProps> = ({ images }) => {
       height: 700,
       width: 700,
       alt: "Image 1",
+      priority: true,
       class: "col-span-2 row-span-2",
     },
     {
@@ -54,14 +55,16 @@ const PostHeadingGallery: React.FC<PostHeadingGalleryProps> = ({ images }) => {
 
   return (
     <div className="grid grid-cols-5 grid-rows-2 gap-4 max-h-[550px] w-full px-4">
-      {styledImages.map((item) => (
+      {styledImages.map((item, idx) => (
         <Image
+          key={idx}
           className={`object-cover w-full h-full select-none ${item.class}`}
           src={`/images/post/${item.image}`}
           height={item.height}
           width={item.width}
           draggable={false}
           alt={item.alt}
+          priority={item.priority}
           placeholder="empty"></Image>
       ))}
     </div>

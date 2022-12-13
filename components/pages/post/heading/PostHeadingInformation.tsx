@@ -42,8 +42,8 @@ const PostStatistics: React.FC<{ statistics: DetailedPost["statistics"] }> = ({
 
   return (
     <>
-      {renderStats.map((item) => (
-        <div className="flex items-start">
+      {renderStats.map((item, idx) => (
+        <div className="flex items-start" key={idx}>
           {<item.icon className={`w-8 mt-1 shrink-0 text-primary`} />}
 
           <div className="ml-2">
