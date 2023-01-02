@@ -23,7 +23,7 @@ const PostTravelTimeline: React.FC<Props> = ({}) => {
     <PostSection title="Travel Timeline" id="travelTimeline">
       <ul>
         {travelTimeline.map((item, idx) => (
-          <li>
+          <li key={idx}>
             <TravelTimelineCard
               slug={data.slug}
               data={item}

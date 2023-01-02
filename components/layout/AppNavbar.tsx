@@ -20,33 +20,44 @@ const curentUser = {
 
 type AppNavbarProps = {
   snapToElementId?: string;
+  fixed?: boolean;
 };
 
 const AppNavbar: FunctionComponent<AppNavbarProps> = ({
   snapToElementId = "homepageCarousel",
+  fixed = true,
 }) => {
   const navbarEl = useRef<any>(null);
-  const parentClass = useState();
+  let parentClass = "flex transition-all items-center z-30 w-screen px-8 py-5";
   const [snapHeight, setSnapHeight] = useState<number | undefined>(undefined);
   const { x, y } = useWindowScroll();
+
+  if (fixed) {
+    parentClass += " fixed";
+  }
 
   useEffect(() => {
     if (snapToElementId) {
       const element = document.getElementById(snapToElementId);
       setSnapHeight(element?.clientHeight);
     }
+
+    return;
   });
 
+  useEffect(() => {
+    if (
+      snapHeight &&
+      navbarEl &&
+      y > snapHeight - navbarEl?.current?.clientHeight
+    ) {
+      parentClass +=
+        "fixed bg-white backdrop-filter backdrop-blur-lg bg-opacity-5 py-2 border-b-gray-200 border-1";
+    }
+  }, [snapHeight, navbarEl]);
+
   return (
-    <div
-      ref={navbarEl}
-      className={`flex transition-all items-center fixed z-30 w-screen px-8 py-5 ${
-        snapHeight &&
-        navbarEl &&
-        y > snapHeight - navbarEl?.current?.clientHeight
-          ? "bg-white backdrop-filter backdrop-blur-lg bg-opacity-5 py-2 border-b-gray-200 border-1"
-          : ""
-      }`}>
+    <div ref={navbarEl} className={parentClass}>
       {}
 
       <Link className="mr-8" href={"/"}>

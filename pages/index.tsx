@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import React, { ReactElement } from "react";
 import HomepageCarousel from "@/components/carousels/HomepageCarousel";
-import DefautlLayout from "@/components/layout/layout";
+import DefautlLayout from "@/components/layout/main";
 import PostsSection from "@/components/sections/PostsSection";
 import posts from "@/data/posts.json";
 import SignUpBanners from "@/components/banners/SignUpBanners";

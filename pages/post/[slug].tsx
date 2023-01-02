@@ -1,4 +1,4 @@
-import DefautlLayout from "@/components/layout/layout";
+import MainLayout from "@/components/layout/main";
 import PostHeading from "@/components/pages/post/PostHeading";
 import PostIntroduction from "@/components/pages/post/PostIntroduction";
 import PostTravelTimeline from "@/components/pages/post/PostTravelTimeline";
@@ -49,7 +49,7 @@ const PostPage = ({
 };
 
 PostPage.getLayout = function getLayout(page: ReactElement) {
-  return <DefautlLayout>{page}</DefautlLayout>;
+  return <MainLayout>{page}</MainLayout>;
 };
 
 export default PostPage;
