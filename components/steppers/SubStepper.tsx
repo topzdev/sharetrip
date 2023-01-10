@@ -1,17 +1,33 @@
 import React, { ReactElement, useEffect, useState } from "react";
 import { Icon } from "@mdi/react";
 import { mdiLock, mdiCheckBold, mdiMenuRight } from "@mdi/js";
+import useStepperType from "hooks/useStepperType";
 
 type Props = {
-  type?: "default" | "current" | "done" | "error" | "lock";
+  active: boolean;
+  done: boolean;
+  locked: boolean;
+  error?: boolean;
   title: string | ReactElement;
+  className?: string;
 };
 
-function SubStepper({ type = "default", title }: Props) {
+function SubStepper({
+  title,
+  className,
+  done,
+  error = false,
+  locked,
+  active,
+}: Props) {
   const [style, setStyle] = useState({
     text: "text-slate-500",
     parent: "",
   });
+
+  const [type] = useStepperType({ done, locked, active, error });
+
+  console.log(title);
 
   useEffect(() => {
     switch (type) {
@@ -74,18 +90,15 @@ function SubStepper({ type = "default", title }: Props) {
 
   const MenuRight = () =>
     type === "current" ? (
-      <Icon
-        className="h-[16px] fill-primary-500"
-        color={""}
-        path={mdiMenuRight}></Icon>
+      <Icon className="h-[16px] fill-primary-500" path={mdiMenuRight}></Icon>
     ) : (
       <></>
     );
 
   return (
-    <div className={`flex items-center ${style.parent} `}>
+    <div className={`flex items-center ${style.parent} ${className}`}>
       <MenuRight />
-      <span className={`font-medium ${style.text}`}>{title}</span>
+      <span className={`font-normal ${style.text}`}>{title}</span>
       <CheckMark />
       <LockStatus />
     </div>

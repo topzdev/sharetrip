@@ -9,6 +9,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        serif: ['var(--font-merriweather)', ...fontFamily.serif],
+        sans: ['var(--font-work-sans)', ...fontFamily.sans],
+      },
 
       colors: {
         primary: {
@@ -24,10 +28,6 @@ module.exports = {
           '800': '#030E0E',
           '900': '#000000'
         }
-      },
-      fontFamily: {
-        sans: ['var(--font-work-sans)', ...fontFamily.sans],
-        serif: ['var(--font-merriweather)', ...fontFamily.serif]
       },
     },
   },
