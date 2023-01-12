@@ -6,12 +6,13 @@ import shallow from "zustand/shallow";
 import Stepper from "@/components/steppers/Stepper";
 import SubStepper from "@/components/steppers/SubStepper";
 import useStepperType from "hooks/useStepperType";
+import pageRoutes from "configs/pageRoutes";
 
 type Props = {};
 
 const Sidebar = (props: Props) => {
-  const { steps } = useCreateItinerary(
-    (state) => ({ steps: state.steps }),
+  const { steps, itineraryId } = useCreateItinerary(
+    (state) => ({ steps: state.steps, itineraryId: state.id }),
     shallow
   );
 
@@ -55,6 +56,10 @@ const Sidebar = (props: Props) => {
     );
   };
 
+  const generateBaseLink = (to?: string) => {
+    return to ? pageRoutes.create(itineraryId).to + to : undefined;
+  };
+
   return (
     <div className="min-w-[300px] w-[300px] bg-slate-50 h-screen border-r-slate-100 overflow-hidden">
       <div className="p-8">
@@ -74,7 +79,8 @@ const Sidebar = (props: Props) => {
               active={item.active}
               done={item.done}
               locked={item.locked}
-              title={item.title}>
+              title={item.title}
+              to={generateBaseLink(item.to)}>
               <>
                 {item.subSteps &&
                   item.subSteps.map((subItem) => (
@@ -84,6 +90,7 @@ const Sidebar = (props: Props) => {
                       done={subItem.done}
                       locked={subItem.locked}
                       className="mb-1"
+                      to={generateBaseLink(subItem.to)}
                       title={subItem.title}></SubStepper>
                   ))}
               </>

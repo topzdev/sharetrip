@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { ReactElement, ReactNode, useState } from "react";
+import React, { useState } from "react";
 import { NextPage } from "next";
 import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
 
@@ -16,26 +16,30 @@ const workSans = Open_Sans({
   weight: ["400", "500", "600", "700"],
 });
 
-export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
-  getLayout?: (page: ReactElement) => ReactNode;
+type ComponentWithPageLayout = AppProps & {
+  Component: AppProps["Component"] & {
+    PageLayout?: any;
+  };
 };
 
-type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout;
-};
-
-export default function App({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout = Component.getLayout || ((page) => page);
+export default function App({ Component, pageProps }: ComponentWithPageLayout) {
+  const PageContent = () => (
+    <QueryClientProvider client={queryClient}>
+      <Hydrate state={pageProps.dehydratedState}>
+        <Component {...pageProps} />
+      </Hydrate>
+    </QueryClientProvider>
+  );
   const [queryClient] = useState(() => new QueryClient());
 
   return (
     <main className={`${merriweather.variable} ${workSans.variable} font-sans`}>
-      {getLayout(
-        <QueryClientProvider client={queryClient}>
-          <Hydrate state={pageProps.dehydratedState}>
-            <Component {...pageProps} />
-          </Hydrate>
-        </QueryClientProvider>
+      {Component.PageLayout ? (
+        <Component.PageLayout>
+          <PageContent />
+        </Component.PageLayout>
+      ) : (
+        <PageContent />
       )}
     </main>
   );

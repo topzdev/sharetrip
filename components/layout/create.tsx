@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from "react";
 import { Merriweather, Work_Sans } from "@next/font/google";
 import CreateSidebar from "./create/CreateSidebar";
+import CreateActionBar from "./create/CreateActionBar";
+import CreatePageBar from "./create/CreatePageBar";
 
 type Props = {
   children: React.ReactNode;
@@ -8,11 +10,16 @@ type Props = {
 
 const CreateLayout: FunctionComponent<Props> = ({ children }) => {
   return (
-    <div>
+    <div className="flex">
       <aside>
         <CreateSidebar />
       </aside>
-      {children}
+
+      <div className="relative">
+        <CreatePageBar />
+        <div className="container mx-auto">{children}</div>
+        <CreateActionBar />
+      </div>
     </div>
   );
 };

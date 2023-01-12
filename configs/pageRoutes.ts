@@ -34,4 +34,32 @@ export default {
       exact: true,
     };
   },
+
+  create: (id: number) => {
+    const parentPath = `/itinerary/${id}`;
+
+    return {
+      title: "Create Itinerary",
+      to: parentPath,
+      subpages: {
+        travelDetails: (() => {
+          const subPath = "travel-details";
+          const subTitle = "Travel Details";
+          return {
+            title: subTitle,
+            subPages: {
+              categories: {
+                title: `${subTitle} - Categories`,
+                to: `${parentPath}/${subPath}/category`,
+              },
+              information: {
+                title: `${subTitle} - Information`,
+                to: `${parentPath}/${subPath}/information`,
+              },
+            },
+          };
+        })(),
+      },
+    };
+  },
 };

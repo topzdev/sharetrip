@@ -1,7 +1,14 @@
-import React, { ReactElement, useEffect, useMemo, useState } from "react";
+import React, {
+  Component,
+  ReactElement,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { Icon } from "@mdi/react";
 import { mdiLock, mdiCheckBold } from "@mdi/js";
 import useStepperType from "hooks/useStepperType";
+import Link from "next/link";
 
 type Props = {
   number: number;
@@ -12,6 +19,7 @@ type Props = {
   title: string | ReactElement;
   children?: ReactElement;
   className?: string;
+  to?: string;
 };
 
 function Stepper({
@@ -23,6 +31,7 @@ function Stepper({
   error = false,
   locked,
   active,
+  to,
 }: Props) {
   const [style, setStyle] = useState({
     circle: "border-slate-500 text-slate-500",
@@ -108,9 +117,9 @@ function Stepper({
     );
   };
 
-  return (
-    <div className={`flex flex-col ${className}`}>
-      <div className={`flex items-center ${style.parent}`}>
+  const Main = () => {
+    return (
+      <>
         <div
           className={`flex h-[40px] w-[40px] justify-center items-center font-bold text-1xl mr-2 rounded-full border-[3px] relative ${style.circle}`}>
           <CircleTextIcon></CircleTextIcon>
@@ -120,7 +129,21 @@ function Stepper({
         <div className="flex flex-col">
           <p className={`text-lg font-bold font-sans ${style.text}`}>{title}</p>
         </div>
-      </div>
+      </>
+    );
+  };
+
+  return (
+    <div className={`flex flex-col ${className}`}>
+      {to && !locked ? (
+        <Link className={`flex items-center ${style.parent}`} href={to}>
+          <Main />
+        </Link>
+      ) : (
+        <div className={`flex items-center ${style.parent}`}>
+          <Main />
+        </div>
+      )}
 
       <div className="flex">
         <DashedPath />

@@ -2,6 +2,7 @@ import React, { ReactElement, useEffect, useState } from "react";
 import { Icon } from "@mdi/react";
 import { mdiLock, mdiCheckBold, mdiMenuRight } from "@mdi/js";
 import useStepperType from "hooks/useStepperType";
+import Link from "next/link";
 
 type Props = {
   active: boolean;
@@ -10,6 +11,7 @@ type Props = {
   error?: boolean;
   title: string | ReactElement;
   className?: string;
+  to?: string;
 };
 
 function SubStepper({
@@ -19,6 +21,7 @@ function SubStepper({
   error = false,
   locked,
   active,
+  to,
 }: Props) {
   const [style, setStyle] = useState({
     text: "text-slate-500",
@@ -95,12 +98,27 @@ function SubStepper({
       <></>
     );
 
-  return (
-    <div className={`flex items-center ${style.parent} ${className}`}>
-      <MenuRight />
-      <span className={`font-normal ${style.text}`}>{title}</span>
-      <CheckMark />
-      <LockStatus />
+  const Main = () => {
+    return (
+      <>
+        {" "}
+        <MenuRight />
+        <span className={`font-normal ${style.text}`}>{title}</span>
+        <CheckMark />
+        <LockStatus />
+      </>
+    );
+  };
+
+  const parentClass = `flex items-center ${style.parent} ${className}`;
+
+  return to && !locked ? (
+    <Link className={parentClass} href={to}>
+      <Main />
+    </Link>
+  ) : (
+    <div className={parentClass}>
+      <Main />
     </div>
   );
 }

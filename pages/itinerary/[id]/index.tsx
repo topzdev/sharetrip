@@ -7,8 +7,6 @@ const ItineraryBySlug = ({}) => {
   return <div>Hello World</div>;
 };
 
-ItineraryBySlug.getLayout = function getLayout(page: ReactElement) {
-  return <CreateLayout>{page}</CreateLayout>;
-};
+ItineraryBySlug.PageLayout = CreateLayout;
 
 export default ItineraryBySlug;

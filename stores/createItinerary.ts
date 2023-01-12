@@ -1,4 +1,5 @@
 import { DetailedPost } from "@/types/data";
+import pageRoutes from "configs/pageRoutes";
 import create from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
@@ -8,6 +9,7 @@ type CreateStep = {
   active: boolean;
   done: boolean;
   locked: boolean;
+  to?: string;
   subSteps?:
     | (CreateStep & {
         parent: number;
@@ -16,11 +18,13 @@ type CreateStep = {
 };
 
 interface CreateItineraryState {
+  id: number;
   steps: CreateStep[];
 }
 
 export const useCreateItinerary = create<CreateItineraryState>()(
-  devtools((set) => ({
+  devtools((set, get) => ({
+    id: 1,
     steps: [
       {
         no: 1,
@@ -28,6 +32,7 @@ export const useCreateItinerary = create<CreateItineraryState>()(
         active: true,
         done: true,
         locked: false,
+        to: "/travel-details/information",
         subSteps: [
           {
             parent: 1,
@@ -36,6 +41,7 @@ export const useCreateItinerary = create<CreateItineraryState>()(
             active: true,
             done: false,
             locked: false,
+            to: "/travel-details/categories",
           },
           {
             parent: 1,
@@ -44,6 +50,7 @@ export const useCreateItinerary = create<CreateItineraryState>()(
             active: false,
             done: false,
             locked: false,
+            to: "/travel-details/information",
           },
         ],
       },
@@ -54,6 +61,7 @@ export const useCreateItinerary = create<CreateItineraryState>()(
         done: false,
         locked: false,
         subSteps: null,
+        to: "/photos",
       },
       {
         no: 3,
@@ -62,6 +70,7 @@ export const useCreateItinerary = create<CreateItineraryState>()(
         done: false,
         locked: true,
         subSteps: null,
+        to: "/itinerary",
       },
       {
         no: 4,
@@ -69,6 +78,7 @@ export const useCreateItinerary = create<CreateItineraryState>()(
         active: false,
         done: false,
         locked: true,
+        to: "/additional/tips-and-reminder",
         subSteps: [
           {
             parent: 4,
@@ -77,6 +87,7 @@ export const useCreateItinerary = create<CreateItineraryState>()(
             active: true,
             done: false,
             locked: true,
+            to: "/additional/tips-and-reminder",
           },
           {
             parent: 4,
@@ -85,6 +96,7 @@ export const useCreateItinerary = create<CreateItineraryState>()(
             active: true,
             done: false,
             locked: true,
+            to: "/additional/expenses",
           },
           {
             parent: 4,
@@ -93,6 +105,7 @@ export const useCreateItinerary = create<CreateItineraryState>()(
             active: false,
             done: false,
             locked: true,
+            to: "/additional/tools-and-apps",
           },
           {
             parent: 4,
@@ -101,6 +114,7 @@ export const useCreateItinerary = create<CreateItineraryState>()(
             active: false,
             done: false,
             locked: true,
+            to: "/additional/difficulty",
           },
         ],
       },
@@ -110,6 +124,7 @@ export const useCreateItinerary = create<CreateItineraryState>()(
         active: false,
         done: true,
         locked: true,
+        to: "/additional/submission",
       },
     ],
   }))
