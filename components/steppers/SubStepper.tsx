@@ -30,8 +30,6 @@ function SubStepper({
 
   const [type] = useStepperType({ done, locked, active, error });
 
-  console.log(title);
-
   useEffect(() => {
     switch (type) {
       case "default":
@@ -43,7 +41,7 @@ function SubStepper({
 
       case "current":
         setStyle({
-          text: "text-primary-500",
+          text: "text-primary-500 font-bold",
           parent: "",
         });
         break;
@@ -83,7 +81,7 @@ function SubStepper({
 
   const CheckMark = () => {
     return type === "done" ? (
-      <span className="flex items-center justify-center min-h-[18px] min-w-[18px] rounded-full bg-primary-500 text-white ml-1">
+      <span className="flex items-center justify-center min-h-[18px] min-w-[18px] rounded-full bg-primary-500 text-white ml-1 ">
         <Icon className="h-[16px]" path={mdiCheckBold}></Icon>
       </span>
     ) : (
@@ -93,7 +91,7 @@ function SubStepper({
 
   const MenuRight = () =>
     type === "current" ? (
-      <Icon className="h-[16px] fill-primary-500" path={mdiMenuRight}></Icon>
+      <Icon className="h-[16px] text-primary-500" path={mdiMenuRight}></Icon>
     ) : (
       <></>
     );
@@ -103,7 +101,7 @@ function SubStepper({
       <>
         {" "}
         <MenuRight />
-        <span className={`font-normal ${style.text}`}>{title}</span>
+        <span className={style.text}>{title}</span>
         <CheckMark />
         <LockStatus />
       </>

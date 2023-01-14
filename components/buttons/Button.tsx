@@ -6,10 +6,11 @@ import Icon from "@mdi/react";
 import classnames from "classnames";
 
 type Props = {
+  className?: string;
   disabled?: boolean;
   variant?: "outlined" | "filled" | "tonal" | "text";
-  color: "primary" | "secondary" | "error" | "info" | "success" | "warning";
-  size: "xs" | "sm" | "base" | "lg" | "xl";
+  color?: "primary" | "secondary" | "error" | "info" | "success" | "warning";
+  size?: "xs" | "sm" | "base" | "lg" | "xl";
   prependIcon?: React.ReactElement;
   appendIcon?: React.ReactElement;
   loading?: boolean;
@@ -36,10 +37,10 @@ const colors = {
   },
 
   secondary: {
-    border: "border-slate-900 hover:border-slate-800 active:border-slate-900",
-    background: "bg-slate-900 hover:bg-slate-800 active:bg-slate-900",
-    text: "text-slate-900 hover:text-primary-800 ",
-    tonal: "bg-slate-900/10 hover:bg-slate-900/[8%] active:bg-slate-900/[12%]",
+    border: "border-slate-800 hover:border-slate-600 active:border-slate-800",
+    background: "bg-slate-800 hover:bg-slate-600 active:bg-slate-800",
+    text: "text-slate-800 hover:text-primary-600 ",
+    tonal: "bg-slate-800/10 hover:bg-slate-600/[8%] active:bg-slate-800/[12%]",
   },
 
   error: {
@@ -91,8 +92,8 @@ const ButtonIcon: React.FC<{
   classList: string[] | string;
   position: "left" | "right";
   icon?: ReactElement;
-  size: Props["size"];
-}> = ({ classList, position, icon, size }) => {
+  size?: Props["size"];
+}> = ({ classList, position, icon, size = "base" }) => {
   const myClass = classnames(
     classList,
     position === "left" ? "mr-2" : "ml-2",
@@ -129,11 +130,13 @@ const Button: React.FC<Props> = ({
   color = "primary",
   label = "Button",
   size = "base",
+  className,
   prependIcon,
   appendIcon,
   loading,
   disabled,
   children,
+  onClick,
 }) => {
   let typeStyle = {
     parent: [
@@ -166,7 +169,7 @@ const Button: React.FC<Props> = ({
   typeStyle.parent.push(sizes[size]);
   typeStyle.icon.push(iconSizes[size]);
 
-  const parentClass = classnames(typeStyle.parent);
+  const parentClass = classnames(typeStyle.parent, className);
 
   const PrependIcon = () => {
     const prependIconClass = typeStyle.icon;
@@ -197,7 +200,7 @@ const Button: React.FC<Props> = ({
   };
 
   return (
-    <button className={parentClass}>
+    <button className={parentClass} onClick={onClick}>
       <PrependIcon />
       {label ? label : children}
       <AppendIcon />

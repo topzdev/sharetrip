@@ -48,7 +48,6 @@ const Sidebar = (props: Props) => {
         color = "border-slate-200";
         break;
     }
-    console.log(type);
 
     return (
       <div

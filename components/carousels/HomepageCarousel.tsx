@@ -108,7 +108,6 @@ const HomepageCarousel = () => {
   const slidesPerView = 1;
 
   const onSlideChange = (e: SwiperMain) => {
-    console.log(e.realIndex);
     setCurrent(data[e.realIndex]);
   };
 
