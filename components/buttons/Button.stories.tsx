@@ -7,6 +7,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import Button from "./Button";
 import Icon from "@mdi/react";
+import { mdiLock } from "@mdi/js";
 
 export default {
   title: "Button",
@@ -23,5 +24,5 @@ Primary.args = {
   size: "base",
   variant: "filled",
   // appendIcon: ,
-  // prependIcon: <Icon path={mdiLock}></Icon>,
+  prependIcon: <Icon path={mdiLock}></Icon>,
 };

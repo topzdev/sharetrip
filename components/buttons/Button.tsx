@@ -1,6 +1,9 @@
 import { TailwindColors } from "@/types/configs";
-import React, { Children } from "react";
+import React, { Children, ReactElement } from "react";
 import colorClasses from "tailwindcss/defaultConfig";
+import { mdiLoading } from "@mdi/js";
+import Icon from "@mdi/react";
+import classnames from "classnames";
 
 type Props = {
   disabled?: boolean;
@@ -24,45 +27,47 @@ const colors = {
   },
 
   primary: {
-    border: "border-primary hover:border-primary-400",
-    background: "bg-primary hover:bg-primary-400",
+    border:
+      "border-primary-500 hover:border-primary-400 active:border-primary-500",
+    background: "bg-primary hover:bg-primary-400 active:bg-primary-500",
     text: "text-primary-500 hover:text-primary-400",
-    tonal: "bg-primary/10",
+    tonal:
+      "bg-primary-500/10 hover:bg-primary-500/[8%] active:bg-primary-500/[12%]",
   },
 
   secondary: {
-    border: "border-slate-900 hover:border-slate-800",
-    background: "bg-slate-900 hover:bg-slate-800",
-    text: "text-slate-900 hover:text-primary-800",
-    tonal: "bg-slate-900/10",
+    border: "border-slate-900 hover:border-slate-800 active:border-slate-900",
+    background: "bg-slate-900 hover:bg-slate-800 active:bg-slate-900",
+    text: "text-slate-900 hover:text-primary-800 ",
+    tonal: "bg-slate-900/10 hover:bg-slate-900/[8%] active:bg-slate-900/[12%]",
   },
 
   error: {
-    border: "border-red-500 hover:border-red-400",
-    background: "bg-red-500 hover:bg-red-400",
+    border: "border-red-500 hover:border-red-400 active:border-red-500",
+    background: "bg-red-500 hover:bg-red-400 active:bg-red-500",
     text: "text-red-500 hover:text-red-400",
-    tonal: "bg-red-500/10",
+    tonal: "bg-red-500/10 hover:bg-red-500/[8%] active:bg-red-500/[12%]",
   },
 
   info: {
-    border: "border-blue-500 hover:border-blue-400",
-    background: "bg-blue hover:bg-blue-800",
+    border: "border-blue-500 hover:border-blue-400 active:border-blue-500",
+    background: "bg-blue-500 hover:bg-blue-400 active:bg-blue-500",
     text: "text-blue-500 hover:text-blue-400",
-    tonal: "bg-blue-500/10",
+    tonal: "bg-blue-500/10 hover:bg-blue-500/[8%] active:bg-blue-500/[12%]",
   },
 
   success: {
-    border: "border-green-600 hover:border-green-500",
-    background: "bg-green-600 hover:bg-green-500",
+    border: "border-green-600 hover:border-green-500 active:border-green-500",
+    background: "bg-green-600 hover:bg-green-500 active:bg-green-500",
     text: "text-green-600 hover:text-green-500",
-    tonal: "bg-green-600/10",
+    tonal: "bg-green-600/10 hover:bg-green-600/[8%] active:bg-green-600/[12%]",
   },
 
   warning: {
-    border: "border-amber-500 hover:border-amber-400",
-    background: "bg-amber-500 hover:bg-amber-400",
+    border: "border-amber-500 hover:border-amber-400 active:border-amber-500",
+    background: "bg-amber-500 hover:bg-amber-400 active:bg-amber-500",
     text: "text-amber-500 hover:text-amber-400",
-    tonal: "bg-amber-500/10",
+    tonal: "bg-amber-500/10 hover:bg-amber-500/[8%] active:bg-amber-500/[12%]",
   },
 };
 
@@ -75,11 +80,48 @@ const sizes = {
 };
 
 const iconSizes = {
-  xs: "h-[12px]",
-  sm: "h-[12px]",
-  base: "h-[12px]",
-  lg: "h-[12px]",
-  xl: "h-[12px]",
+  xs: "child:h-[12px]",
+  sm: "child:h-[14px]",
+  base: "child:h-[16px]",
+  lg: "child:h-[18px]",
+  xl: "child:h-[20px]",
+};
+
+const ButtonIcon: React.FC<{
+  classList: string[] | string;
+  position: "left" | "right";
+  icon?: ReactElement;
+  size: Props["size"];
+}> = ({ classList, position, icon, size }) => {
+  const myClass = classnames(
+    classList,
+    position === "left" ? "mr-2" : "ml-2",
+    iconSizes[size]
+  );
+
+  return icon ? <span className={myClass}>{icon}</span> : <></>;
+};
+
+const ButtonLoading = () => {
+  return (
+    <svg
+      className="animate-spin h-5 w-5"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      viewBox="0 0 24 24">
+      <circle
+        className="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        stroke-width="4"></circle>
+      <path
+        className="opacity-75"
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+    </svg>
+  );
 };
 
 const Button: React.FC<Props> = ({
@@ -94,7 +136,10 @@ const Button: React.FC<Props> = ({
   children,
 }) => {
   let typeStyle = {
-    parent: ["flex items-center rounded-md border-2 font-bold"],
+    parent: [
+      "flex items-center rounded-md border-2 font-bold transition ease-in",
+    ],
+    icon: [""],
   };
 
   const { border, text, tonal, background } =
@@ -108,10 +153,10 @@ const Button: React.FC<Props> = ({
         typeStyle.parent.push(background, "text-white", border);
         break;
       case "tonal":
-        typeStyle.parent.push(tonal, text);
+        typeStyle.parent.push(tonal, text, "border-transparent");
         break;
       case "text":
-        typeStyle.parent.push(text);
+        typeStyle.parent.push(text, "border-transparent");
         break;
     }
   } else {
@@ -119,25 +164,43 @@ const Button: React.FC<Props> = ({
   }
 
   typeStyle.parent.push(sizes[size]);
+  typeStyle.icon.push(iconSizes[size]);
+
+  const parentClass = classnames(typeStyle.parent);
 
   const PrependIcon = () => {
-    return prependIcon ? <span className="mr-1">{prependIcon}</span> : <></>;
+    const prependIconClass = typeStyle.icon;
+    let iconToRender = prependIcon;
+    if (loading) {
+      iconToRender = <ButtonLoading />;
+    }
+
+    return (
+      <ButtonIcon
+        icon={iconToRender}
+        position="left"
+        size={size}
+        classList={prependIconClass}
+      />
+    );
   };
 
   const AppendIcon = () => {
-    return appendIcon ? <span className="ml-1">{appendIcon}</span> : <></>;
+    return (
+      <ButtonIcon
+        icon={appendIcon}
+        position="right"
+        size={size}
+        classList={typeStyle.icon}
+      />
+    );
   };
 
-  const parentStyle = [...typeStyle.parent].join(" ");
   return (
-    <button className={parentStyle}>
-      <>
-        <PrependIcon />
-
-        {label ? label : children}
-
-        {/* <AppendIcon /> */}
-      </>
+    <button className={parentClass}>
+      <PrependIcon />
+      {label ? label : children}
+      <AppendIcon />
     </button>
   );
 };
