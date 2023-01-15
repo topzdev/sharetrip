@@ -16,6 +16,10 @@
 	}
 }
 
+html, body {
+	font-family: 'Work Sans' serif;
+}
+
 svg {
 	fill: currentColor;
 }
