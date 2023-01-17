@@ -99,8 +99,8 @@ function SubStepper({
   const Main = () => {
     return (
       <>
-        {" "}
         <MenuRight />
+        {type}
         <span className={style.text}>{title}</span>
         <CheckMark />
         <LockStatus />

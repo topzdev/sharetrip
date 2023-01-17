@@ -1,5 +1,5 @@
 import { stat } from "fs";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useCreateItinerary } from "stores/createItinerary";
 import AppLogo from "../AppLogo";
 import shallow from "zustand/shallow";
@@ -7,12 +7,19 @@ import Stepper from "@/components/steppers/Stepper";
 import SubStepper from "@/components/steppers/SubStepper";
 import useStepperType from "hooks/useStepperType";
 import pageRoutes from "configs/pageRoutes";
+import { useRouter } from "next/router";
 
 type Props = {};
 
 const Sidebar = (props: Props) => {
-  const { steps, itineraryId } = useCreateItinerary(
-    (state) => ({ steps: state.steps, itineraryId: state.id }),
+  const router = useRouter();
+
+  const { steps, itineraryId, current } = useCreateItinerary(
+    (state) => ({
+      steps: state.steps,
+      itineraryId: state.id,
+      current: state.getters.current,
+    }),
     shallow
   );
 
@@ -58,6 +65,13 @@ const Sidebar = (props: Props) => {
   const generateBaseLink = (to?: string) => {
     return to ? pageRoutes.create(itineraryId).to + to : undefined;
   };
+
+  useEffect(() => {
+    if (current.to) {
+      const link = generateBaseLink(current.to);
+      if (link) router.push(link);
+    }
+  }, [current.to]);
 
   return (
     <div className="min-w-[300px] w-[300px] bg-slate-50 h-screen border-r-slate-100 overflow-hidden">

@@ -1,4 +1,5 @@
 import Button from "@/components/buttons/Button";
+import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useCreateItinerary } from "stores/createItinerary";
 import shallow from "zustand/shallow";
@@ -6,27 +7,23 @@ import shallow from "zustand/shallow";
 type Props = {};
 
 const CreateActionBar = (props: Props) => {
-  const { next, back, currentStep } = useCreateItinerary(
+  const { next, back, current } = useCreateItinerary(
     (state) => ({
       next: state.actions.next,
       back: state.actions.back,
-      currentStep: state.computed.currentStep,
+      current: state.getters.current,
     }),
     shallow
   );
 
-  // useEffect(() => {
-  //   console.log(currentStep);
-  // }, [currentStep]);
-
   return (
-    <div className="absolute bottom-0 left-0 w-full flex flex-col">
+    <div className="fixed bottom-0 right-0 flex flex-col bg-white w-[calc(100%-300px)]">
       <div className="h-[5px] w-full bg-slate-100 flex">
         <div className="w-[80%] block bg-primary"></div>
       </div>
 
       <div className="flex w-full py-4 px-5">
-        {currentStep.prev && (
+        {current.prev && (
           <Button
             color="primary"
             variant="tonal"
@@ -35,7 +32,7 @@ const CreateActionBar = (props: Props) => {
           />
         )}
 
-        {currentStep.next && (
+        {current.next && (
           <Button
             className="ml-auto"
             color="primary"

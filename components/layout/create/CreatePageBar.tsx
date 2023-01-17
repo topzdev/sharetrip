@@ -6,18 +6,16 @@ import shallow from "zustand/shallow";
 type Props = {};
 
 const CreatePageBar = (props: Props) => {
-  const { currentStep } = useCreateItinerary(
+  const { current } = useCreateItinerary(
     (state) => ({
-      currentStep: state.computed.currentStep,
+      current: state.getters.current,
     }),
     shallow
   );
 
   return (
     <div className="flex py-4 px-5 items-center">
-      <h3 className="text-lg font-semibold text-slate-500">
-        {currentStep.title}
-      </h3>
+      <h3 className="text-lg font-semibold text-slate-500">{current.title}</h3>
       <Button
         className="ml-auto"
         color="secondary"

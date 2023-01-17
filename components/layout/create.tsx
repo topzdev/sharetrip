@@ -10,12 +10,12 @@ type Props = {
 
 const CreateLayout: FunctionComponent<Props> = ({ children }) => {
   return (
-    <div className="flex justify-start">
+    <div className="flex justify-start min-h-screen max-h-screen">
       <aside>
         <CreateSidebar />
       </aside>
 
-      <div className="relative w-full">
+      <div className="relative w-full overflow-auto max-h-screen bg-red-50">
         <CreatePageBar />
         <div className="container mx-auto">{children}</div>
         <CreateActionBar />

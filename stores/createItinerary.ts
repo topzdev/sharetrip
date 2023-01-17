@@ -1,6 +1,7 @@
 import { DetailedPost } from "@/types/data";
 import pageRoutes from "configs/pageRoutes";
 import { stat } from "fs";
+import next from "next";
 import { useRouter } from "next/router";
 import create from "zustand";
 import { devtools, persist } from "zustand/middleware";
@@ -18,10 +19,11 @@ type CreateStep = {
 
 interface CreateItineraryState {
   id: number;
+  currentStep: number;
   steps: CreateStep[];
-  computed: {
+  getters: {
     mergeSteps: CreateStep[];
-    currentStep: CreateStep & {
+    current: CreateStep & {
       prev?: CreateStep | null;
       next?: CreateStep | null;
     };
@@ -35,6 +37,7 @@ interface CreateItineraryState {
 export const useCreateItinerary = create<CreateItineraryState>()(
   (set, get) => ({
     id: 1,
+    currentStep: 1,
     steps: [
       {
         no: 1,
@@ -69,7 +72,7 @@ export const useCreateItinerary = create<CreateItineraryState>()(
             active: false,
             done: false,
             locked: false,
-            to: "/photos",
+            to: "/travel-details/photos",
           },
           {
             parent: 1,
@@ -78,7 +81,7 @@ export const useCreateItinerary = create<CreateItineraryState>()(
             active: false,
             done: false,
             locked: true,
-            to: "/itinerary",
+            to: "/travel-details/itinerary",
           },
         ],
       },
@@ -141,11 +144,11 @@ export const useCreateItinerary = create<CreateItineraryState>()(
           {
             parent: 3,
             no: 1,
-            title: "Preview",
+            title: "Review",
             active: false,
             done: false,
             locked: true,
-            to: "/submission/preview",
+            to: "/submission/review",
           },
           {
             parent: 3,
@@ -160,26 +163,21 @@ export const useCreateItinerary = create<CreateItineraryState>()(
       },
     ],
 
-    computed: {
-      get currentStep() {
+    getters: {
+      get current() {
         let prev = null;
         let next = null;
         let cur = null;
-        const mergeSteps = get().computed.mergeSteps;
+        const mergeSteps = get().getters.mergeSteps;
 
-        let i = 0;
-        while (mergeSteps[i].done) {
-          i++;
-        }
-
-        prev = mergeSteps[i - 1];
-        cur = mergeSteps[i];
-        next = mergeSteps[i + 1];
+        prev = mergeSteps[get().currentStep - 1];
+        cur = mergeSteps[get().currentStep];
+        next = mergeSteps[get().currentStep + 1];
 
         return {
+          prev,
           ...cur,
           next,
-          prev,
         };
       },
 
@@ -194,86 +192,55 @@ export const useCreateItinerary = create<CreateItineraryState>()(
     },
 
     actions: {
-      next: () =>
-        set((state) => {
-          const cur = state.computed.currentStep;
-          const next = cur.next;
+      next: () => {
+        const { steps, currentStep, getters } = get();
 
-          if (cur.parent) {
-            const parent = state.steps[cur.parent - 1];
-            const parentNext = state.steps[cur.parent];
+        if (currentStep >= getters.mergeSteps.length) return;
 
-            if (parent?.subSteps) {
-              parent.subSteps[cur.no - 1].done = true;
-              parent.subSteps[cur.no - 1].locked = false;
-
-              if (next) {
-                parent.subSteps[next.no - 1].active = true;
-                parent.subSteps[next.no - 1].locked = false;
+        const newSteps = steps.map((item) => {
+          return {
+            ...item,
+            subSteps: item.subSteps?.map((subItem) => {
+              const { no, parent, next } = getters.current;
+              if (subItem.parent === parent && subItem.no === no) {
+                return {
+                  ...subItem,
+                  done: true,
+                };
               }
-            }
 
-            if (next?.parent != cur?.parent) {
-              parent.done = true;
-              parent.locked = false;
-              parentNext.active = true;
-              parentNext.locked = false;
-
-              if (parentNext.subSteps && parentNext.subSteps.length) {
-                parentNext.subSteps[0].active = true;
-                parentNext.subSteps[0].locked = false;
+              if (subItem.parent === next?.parent && subItem.no === next?.no) {
+                return {
+                  ...subItem,
+                  active: true,
+                  locked: false,
+                };
               }
-            }
 
-            return {
-              steps: state.steps.map((item) => {
-                if (item.no === parent.no) {
-                  return parent;
-                }
+              return {
+                ...subItem,
+                active: false,
+                done: false,
+              };
+            }),
+          };
+        });
 
-                if (parentNext && parentNext.no === item.no) {
-                  return parentNext;
-                }
-                return item;
-              }),
-            };
-          }
+        set({
+          steps: newSteps,
+          currentStep: currentStep + 1,
+        });
+      },
 
-          return state;
-        }),
-      back: () =>
-        set((state) => {
-          const cur = state.computed.currentStep;
-          const prev = cur.prev;
+      back: () => {
+        const { steps, currentStep, getters } = get();
 
-          if (cur.parent) {
-            const parent = state.steps[cur.parent - 1];
-            const parentPrev = state.steps[cur.parent];
+        if (currentStep === 0) return;
 
-            if (parent.subSteps) {
-              parent.subSteps[cur.no - 1].active = false;
-
-              if (prev) {
-                parent.subSteps[prev.no - 1].active = true;
-              }
-            }
-
-            return {
-              steps: state.steps.map((item) => {
-                if (item.no === parent.no) {
-                  return parent;
-                }
-
-                if (parentPrev && parentPrev.no === item.no) {
-                  return parentPrev;
-                }
-                return item;
-              }),
-            };
-          }
-
-          return state;
-        }),
+        set({
+          currentStep: currentStep - 1,
+        });
+      },
     },
   })
 );
