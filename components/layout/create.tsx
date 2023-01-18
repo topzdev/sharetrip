@@ -15,7 +15,7 @@ const CreateLayout: FunctionComponent<Props> = ({ children }) => {
         <CreateSidebar />
       </aside>
 
-      <div className="relative w-full overflow-auto max-h-screen bg-red-50">
+      <div className="relative w-full overflow-auto max-h-screen">
         <CreatePageBar />
         <div className="container mx-auto">{children}</div>
         <CreateActionBar />

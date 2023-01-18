@@ -26,6 +26,7 @@ interface CreateItineraryState {
     current: CreateStep & {
       prev?: CreateStep | null;
       next?: CreateStep | null;
+      parent?: CreateStep | null;
     };
   };
   actions: {
@@ -37,7 +38,7 @@ interface CreateItineraryState {
 export const useCreateItinerary = create<CreateItineraryState>()(
   (set, get) => ({
     id: 1,
-    currentStep: 1,
+    currentStep: 0,
     steps: [
       {
         no: 1,
@@ -165,19 +166,26 @@ export const useCreateItinerary = create<CreateItineraryState>()(
 
     getters: {
       get current() {
-        let prev = null;
-        let next = null;
-        let cur = null;
+        let prev = null,
+          next = null,
+          cur = null,
+          parent = null;
         const mergeSteps = get().getters.mergeSteps;
 
         prev = mergeSteps[get().currentStep - 1];
         cur = mergeSteps[get().currentStep];
         next = mergeSteps[get().currentStep + 1];
 
+        if (cur && cur.parent) {
+          parent = JSON.parse(JSON.stringify(get().steps[cur.parent - 1]));
+          delete parent.subSteps;
+        }
+
         return {
           prev,
           ...cur,
           next,
+          parent,
         };
       },
 
@@ -197,37 +205,7 @@ export const useCreateItinerary = create<CreateItineraryState>()(
 
         if (currentStep >= getters.mergeSteps.length) return;
 
-        const newSteps = steps.map((item) => {
-          return {
-            ...item,
-            subSteps: item.subSteps?.map((subItem) => {
-              const { no, parent, next } = getters.current;
-              if (subItem.parent === parent && subItem.no === no) {
-                return {
-                  ...subItem,
-                  done: true,
-                };
-              }
-
-              if (subItem.parent === next?.parent && subItem.no === next?.no) {
-                return {
-                  ...subItem,
-                  active: true,
-                  locked: false,
-                };
-              }
-
-              return {
-                ...subItem,
-                active: false,
-                done: false,
-              };
-            }),
-          };
-        });
-
         set({
-          steps: newSteps,
           currentStep: currentStep + 1,
         });
       },
@@ -235,7 +213,7 @@ export const useCreateItinerary = create<CreateItineraryState>()(
       back: () => {
         const { steps, currentStep, getters } = get();
 
-        if (currentStep === 0) return;
+        if (currentStep < 0) return;
 
         set({
           currentStep: currentStep - 1,
