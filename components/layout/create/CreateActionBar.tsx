@@ -1,4 +1,5 @@
 import Button from "@/components/buttons/Button";
+import { stat } from "fs";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useCreateItinerary } from "stores/createItinerary";
@@ -7,14 +8,18 @@ import shallow from "zustand/shallow";
 type Props = {};
 
 const CreateActionBar = (props: Props) => {
-  const { next, back, current } = useCreateItinerary(
-    (state) => ({
-      next: state.actions.next,
-      back: state.actions.back,
-      current: state.getters.current,
-    }),
-    shallow
-  );
+  // const { next, back, current } = useCreateItinerary(
+  //   (state) => ({
+  //     next: state.actions.next,
+  //     back: state.actions.back,
+  //     current: state.getters.current,
+  //   }),
+  //   shallow
+  // );
+
+  const next = useCreateItinerary((state) => state.actions.next, shallow);
+  const back = useCreateItinerary((state) => state.actions.back, shallow);
+  const current = useCreateItinerary((state) => state.getters.current, shallow);
 
   return (
     <div className="fixed bottom-0 right-0 flex flex-col bg-white w-[calc(100%-300px)]">

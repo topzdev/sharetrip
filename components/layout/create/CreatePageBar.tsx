@@ -6,12 +6,7 @@ import shallow from "zustand/shallow";
 type Props = {};
 
 const CreatePageBar = (props: Props) => {
-  const { current } = useCreateItinerary(
-    (state) => ({
-      current: state.getters.current,
-    }),
-    shallow
-  );
+  const current = useCreateItinerary((state) => state.getters.current, shallow);
 
   return (
     <div className="flex py-4 px-5 items-center">

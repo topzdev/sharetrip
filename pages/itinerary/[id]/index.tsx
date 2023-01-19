@@ -7,13 +7,7 @@ import shallow from "zustand/shallow";
 type Props = {};
 
 const ItineraryBySlug = ({}) => {
-  const { steps, current } = useCreateItinerary(
-    (state) => ({
-      steps: state.steps,
-      current: state.getters.current,
-    }),
-    shallow
-  );
+  const current = useCreateItinerary((state) => state.getters.current, shallow);
 
   return (
     <div>

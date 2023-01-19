@@ -13,15 +13,9 @@ type Props = {};
 
 const Sidebar = (props: Props) => {
   const router = useRouter();
-
-  const { steps, itineraryId, current } = useCreateItinerary(
-    (state) => ({
-      steps: state.steps,
-      itineraryId: state.id,
-      current: state.getters.current,
-    }),
-    shallow
-  );
+  const steps = useCreateItinerary((state) => state.steps, shallow);
+  const itineraryId = useCreateItinerary((state) => state.id, shallow);
+  const current = useCreateItinerary((state) => state.getters.current, shallow);
 
   const TopDashedCorner = () => {
     const color = steps[0].active ? "border-primary" : "border-slate-500";

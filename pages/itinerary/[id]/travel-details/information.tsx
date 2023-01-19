@@ -7,16 +7,17 @@ import shallow from "zustand/shallow";
 type Props = {};
 
 const TravelDetailInformation = ({}) => {
-  const { steps, current } = useCreateItinerary(
-    (state) => ({
-      steps: state.steps,
-      current: state.getters.current,
-    }),
-    shallow
-  );
+  // const { current } = useCreateItinerary(
+  //   (state) => ({
+  //     current: state.getters.current,
+  //   }),
+  //   shallow
+  // );
+  const current = useCreateItinerary((state) => state.getters.current, shallow);
   return (
     <div>
       <ReactLog value={current} />
+      <button>ReRendered</button>
     </div>
   );
 };

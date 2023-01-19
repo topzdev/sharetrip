@@ -5,7 +5,7 @@ type Props = {
 };
 
 const CreatePageContainer: React.FC<Props> = ({ children }) => {
-  return <div className="w-[800px] mx-auto">{children}</div>;
+  return <div className="w-[700px] mx-auto">{children}</div>;
 };
 
 export default CreatePageContainer;

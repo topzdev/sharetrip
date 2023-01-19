@@ -17,10 +17,16 @@ type CreateStep = {
   subSteps?: CreateStep[] | null;
 };
 
+type CreateStepForm = {
+  categories: number[];
+};
+
 interface CreateItineraryState {
   id: number;
   currentStep: number;
   steps: CreateStep[];
+  form?: CreateStepForm;
+  categories: CreateStepForm["categories"];
   getters: {
     mergeSteps: CreateStep[];
     current: CreateStep & {
@@ -29,6 +35,7 @@ interface CreateItineraryState {
       parent?: CreateStep | null;
     };
   };
+  setCategories: (categories: CreateStepForm["categories"]) => void;
   actions: {
     next: () => void;
     back: () => void;
@@ -39,6 +46,9 @@ export const useCreateItinerary = create<CreateItineraryState>()(
   (set, get) => ({
     id: 1,
     currentStep: 0,
+
+    categories: [],
+
     steps: [
       {
         no: 1,
@@ -166,6 +176,7 @@ export const useCreateItinerary = create<CreateItineraryState>()(
 
     getters: {
       get current() {
+        console.log("Current Renrender?");
         let prev = null,
           next = null,
           cur = null,
@@ -198,6 +209,10 @@ export const useCreateItinerary = create<CreateItineraryState>()(
         }, []);
       },
     },
+    setCategories: (categories: CreateStepForm["categories"]) =>
+      set(() => ({
+        categories,
+      })),
 
     actions: {
       next: () => {
