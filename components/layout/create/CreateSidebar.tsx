@@ -1,21 +1,21 @@
 import { stat } from "fs";
 import React, { useCallback, useEffect } from "react";
-import { useCreateItinerary } from "stores/createItinerary";
 import AppLogo from "../AppLogo";
-import shallow from "zustand/shallow";
 import Stepper from "@/components/steppers/Stepper";
 import SubStepper from "@/components/steppers/SubStepper";
 import useStepperType from "hooks/useStepperType";
 import pageRoutes from "configs/pageRoutes";
 import { useRouter } from "next/router";
+import { observer } from "mobx-react-lite";
+import createItineraryStore from "stores/createItinerary";
 
 type Props = {};
 
 const Sidebar = (props: Props) => {
   const router = useRouter();
-  const steps = useCreateItinerary((state) => state.steps, shallow);
-  const itineraryId = useCreateItinerary((state) => state.id, shallow);
-  const current = useCreateItinerary((state) => state.getters.current, shallow);
+  const steps = createItineraryStore.steps;
+  const itineraryId = createItineraryStore.id;
+  const current = createItineraryStore.current;
 
   const TopDashedCorner = () => {
     const color = steps[0].active ? "border-primary" : "border-slate-500";
@@ -111,4 +111,4 @@ const Sidebar = (props: Props) => {
   );
 };
 
-export default Sidebar;
+export default observer(Sidebar);

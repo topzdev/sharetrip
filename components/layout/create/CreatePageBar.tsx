@@ -1,20 +1,20 @@
 import Button from "@/components/buttons/Button";
 import React from "react";
-import { useCreateItinerary } from "stores/createItinerary";
-import shallow from "zustand/shallow";
+import { observer } from "mobx-react-lite";
+import createItineraryStore from "stores/createItinerary";
 
 type Props = {};
 
 const CreatePageBar = (props: Props) => {
-  const current = useCreateItinerary((state) => state.getters.current, shallow);
+  const current = createItineraryStore.current;
 
   return (
     <div className="flex py-4 px-5 items-center">
-      {current.parent && (
+      {/* {current.parent && (
         <h3 className="text-lg font-semibold text-slate-500">
           {current.parent?.title}
         </h3>
-      )}
+      )} */}
       <Button
         className="ml-auto"
         color="secondary"
@@ -26,4 +26,4 @@ const CreatePageBar = (props: Props) => {
   );
 };
 
-export default CreatePageBar;
+export default observer(CreatePageBar);

@@ -1,7 +1,7 @@
 import CreateLayout from "@/components/layout/create";
 import ReactLog from "@/components/utility/ReactLog";
 import React, { ReactElement } from "react";
-import { useCreateItinerary } from "stores/createItinerary";
+import { useCreateItinerary } from "stores/createItinerary.zustand";
 import shallow from "zustand/shallow";
 
 type Props = {};
@@ -13,10 +13,10 @@ const TravelDetailInformation = ({}) => {
   //   }),
   //   shallow
   // );
-  const current = useCreateItinerary((state) => state.getters.current, shallow);
+  // const current = useCreateItinerary((state) => state.getters.current, shallow);
   return (
     <div>
-      <ReactLog value={current} />
+      {/* <ReactLog value={current} /> */}
       <button>ReRendered</button>
     </div>
   );
