@@ -1,24 +1,11 @@
+import { CreateStep, CreateItineraryForm } from "@/types/createItinerary";
 import { makeAutoObservable } from "mobx";
-
-type CreateStep = {
-  no: number;
-  parent?: number;
-  title: string;
-  active: boolean;
-  done: boolean;
-  locked: boolean;
-  to: string;
-  subSteps?: CreateStep[] | null;
-};
-
-type CreateStepForm = {
-  categories: number[];
-};
 
 class CreateItineraryStore {
   id: number = 1;
   currentStep: number = 0;
-  categories: CreateStepForm["categories"] = [];
+  categories: CreateItineraryForm["categories"] = [];
+  loading: boolean = false;
   steps: CreateStep[] = [
     {
       no: 1,
@@ -181,18 +168,24 @@ class CreateItineraryStore {
     }, []);
   }
 
+  setLoading(load: boolean) {
+    this.loading = load;
+  }
+
   next() {
-    const { currentStep } = this;
+    console.log(this.currentStep);
 
-    if (currentStep >= this.mergeSteps.length) return;
-
+    if (this.currentStep >= this.mergeSteps.length) return;
     this.currentStep++;
   }
 
   back() {
-    const { currentStep } = this;
-    if (currentStep < 0) return;
+    if (this.currentStep < 0) return;
     this.currentStep--;
+  }
+
+  setCategories(categories: CreateItineraryForm["categories"]) {
+    this.categories = categories;
   }
 }
 

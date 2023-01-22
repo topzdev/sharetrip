@@ -10,11 +10,11 @@ const CreatePageBar = (props: Props) => {
 
   return (
     <div className="flex py-4 px-5 items-center">
-      {/* {current.parent && (
+      {current.parent && (
         <h3 className="text-lg font-semibold text-slate-500">
-          {current.parent?.title}
+          {current.parent.title}
         </h3>
-      )} */}
+      )}
       <Button
         className="ml-auto"
         color="secondary"

@@ -16,7 +16,8 @@ type Props = {
   loading?: boolean;
   children?: React.ReactElement;
   label: string;
-  onClick: () => void;
+  form?: string;
+  onClick?: () => void;
 };
 
 const colors = {
@@ -116,7 +117,7 @@ const ButtonLoading = () => {
         cy="12"
         r="10"
         stroke="currentColor"
-        stroke-width="4"></circle>
+        strokeWidth="4"></circle>
       <path
         className="opacity-75"
         fill="currentColor"
@@ -130,6 +131,7 @@ const Button: React.FC<Props> = ({
   color = "primary",
   label = "Button",
   size = "base",
+  form,
   className,
   prependIcon,
   appendIcon,
@@ -200,7 +202,7 @@ const Button: React.FC<Props> = ({
   };
 
   return (
-    <button className={parentClass} onClick={onClick}>
+    <button form={form} className={parentClass} onClick={onClick}>
       <PrependIcon />
       {label ? label : children}
       <AppendIcon />

@@ -5,9 +5,8 @@ import createItineraryStore from "stores/createItinerary";
 type Props = {};
 
 const CreateActionBar = (props: Props) => {
-  const next = createItineraryStore.next;
-  const back = createItineraryStore.back;
   const current = createItineraryStore.current;
+  const loading = createItineraryStore.loading;
 
   return (
     <div className="fixed bottom-0 right-0 flex flex-col bg-white w-[calc(100%-300px)]">
@@ -21,7 +20,7 @@ const CreateActionBar = (props: Props) => {
             color="primary"
             variant="tonal"
             label={"Back"}
-            onClick={() => back()}
+            onClick={() => createItineraryStore.back()}
           />
         )}
 
@@ -31,7 +30,9 @@ const CreateActionBar = (props: Props) => {
             color="primary"
             variant="filled"
             label={"Next"}
-            onClick={() => next()}
+            loading={loading}
+            form="createItineraryForm"
+            // onClick={() => createItineraryStore.next()}
           />
         )}
       </div>

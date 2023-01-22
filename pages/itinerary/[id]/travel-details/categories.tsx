@@ -11,9 +11,7 @@ const TravelDetailsCategoryPage = ({}) => {
         Select at least 1 and up to 5 travel category for this itinerary.
       </p>
 
-      <div className="grid grid-cols-6 gap-x-2 gap-y-5 mt-10">
-        <CategoryList />
-      </div>
+      <CategoryList />
     </CreatePageContainer>
   );
 };
