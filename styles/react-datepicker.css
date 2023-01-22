@@ -1,0 +1,29 @@
+.react-datepicker {
+	@apply !font-sans ;
+}
+
+
+.react-datepicker__input-container input {
+	@apply !text-base !border-0
+}
+
+.react-datepicker__calendar {
+	@apply !border-slate-200 !border-[1px] mt-1 rounded-md !text-sm
+} 
+
+.react-datepicker__triangle {
+	@apply hidden
+}
+
+
+.react-datepicker__day:hover {
+	@apply !bg-slate-200 !text-slate-800
+}
+
+.react-datepicker__header  {
+ @apply	!bg-slate-100 border-slate-200;
+}
+
+.react-datepicker__day--keyboard-selected, .react-datepicker__month-text--keyboard-selected, .react-datepicker__quarter-text--keyboard-selected, .react-datepicker__year-text--keyboard-selected, .react-datepicker__day--selected, .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range, .react-datepicker__month-text--selected, .react-datepicker__month-text--in-selecting-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--selected, .react-datepicker__quarter-text--in-selecting-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--selected, .react-datepicker__year-text--in-selecting-range, .react-datepicker__year-text--in-range {
+	@apply	!bg-primary
+}

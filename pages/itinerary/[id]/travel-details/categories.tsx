@@ -1,15 +1,17 @@
 import CreateLayout from "@/components/layout/create";
-import CategoryList from "@/components/pages/create/components/CategoryList";
 import CreatePageContainer from "@/components/pages/create/CreatePageContainer";
-import ReactLog from "@/components/utility/ReactLog";
+import CreatePageHeader from "@/components/pages/create/layout/CreatePageHeader";
+import CategoryList from "@/components/pages/create/list/CategoryList";
 
 const TravelDetailsCategoryPage = ({}) => {
   return (
     <CreatePageContainer>
-      <h2 className="text-2xl font-bold">Categories</h2>
-      <p className="text-slate-500 mt-1">
-        Select at least 1 and up to 5 travel category for this itinerary.
-      </p>
+      <CreatePageHeader
+        title={"Categories"}
+        description={
+          "Select at least 1 and up to 5 travel category for this itinerary."
+        }
+      />
 
       <CategoryList />
     </CreatePageContainer>

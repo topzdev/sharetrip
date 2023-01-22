@@ -187,7 +187,7 @@ class CreateItineraryStore {
   }
 
   get progress() {
-    return ((this.currentStep + 1) / this.mergeSteps.length) * 100;
+    return (this.currentStep / this.mergeSteps.length) * 100;
   }
 
   setLoading(load: boolean) {

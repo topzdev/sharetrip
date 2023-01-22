@@ -1,9 +1,12 @@
 import React from "react";
 import InputWrapper, { InputProps } from "./InputWrapper";
 
-type TextareaProps = Omit<InputProps, "prependIcon" | "appendIcon">;
+type TextareaProps = Omit<InputProps, "prependIcon" | "appendIcon"> & {
+  cols?: number;
+  rows?: number;
+};
 
-const Textarea: React.FC<TextareaProps> = ({ ...props }) => {
+const Textarea: React.FC<TextareaProps> = ({ rows = 10, cols, ...props }) => {
   return (
     <InputWrapper {...props}>
       {({
@@ -21,6 +24,8 @@ const Textarea: React.FC<TextareaProps> = ({ ...props }) => {
           className={inputClassname}
           placeholder={placeholder}
           id={id}
+          cols={cols}
+          rows={rows}
           name={name}
           onChange={onChange}
           value={value}

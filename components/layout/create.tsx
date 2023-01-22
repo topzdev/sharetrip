@@ -1,12 +1,13 @@
 import React, { FunctionComponent, useEffect } from "react";
 import { Merriweather, Work_Sans } from "@next/font/google";
-import CreateSidebar from "./create/CreateSidebar";
-import CreateActionBar from "./create/CreateActionBar";
-import CreatePageBar from "./create/CreatePageBar";
+import CreateSidebar from "../pages/create/layout/CreateSidebar";
+import CreateActionBar from "../pages/create/layout/CreateActionBar";
+import CreatePageBar from "../pages/create/layout/CreatePageBar";
 import { useRouter } from "next/router";
 import { observer } from "mobx-react-lite";
 import createItineraryStore from "@/stores/createItinerary";
 import useCreateItineraryPageInfo from "@/hooks/useCreateItineraryPageInfo";
+import Head from "next/head";
 
 type Props = {
   children: React.ReactNode;
@@ -39,6 +40,12 @@ const CreateLayout: FunctionComponent<Props> = ({ children }) => {
 
   return (
     <div className="flex justify-start min-h-screen max-h-screen">
+      <Head>
+        <title>
+          {current.title ? `${current.title} - ${current.parent?.title}` : ""}
+        </title>
+      </Head>
+
       <aside>
         <CreateSidebar />
       </aside>

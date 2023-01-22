@@ -1,24 +1,22 @@
 import CreateLayout from "@/components/layout/create";
-import ReactLog from "@/components/utility/ReactLog";
-import React, { ReactElement } from "react";
-import { useCreateItinerary } from "stores/createItinerary.zustand";
-import shallow from "zustand/shallow";
+import CreatePageContainer from "@/components/pages/create/CreatePageContainer";
+import InformationForm from "@/components/pages/create/forms/InformationForm";
+import CreatePageHeader from "@/components/pages/create/layout/CreatePageHeader";
 
 type Props = {};
 
 const TravelDetailInformation = ({}) => {
-  // const { current } = useCreateItinerary(
-  //   (state) => ({
-  //     current: state.getters.current,
-  //   }),
-  //   shallow
-  // );
-  // const current = useCreateItinerary((state) => state.getters.current, shallow);
   return (
-    <div>
-      {/* <ReactLog value={current} /> */}
-      <button>ReRendered</button>
-    </div>
+    <CreatePageContainer>
+      <CreatePageHeader
+        title={"Information"}
+        description={
+          "Please give your trip some main information so other users get a first impression about your personal trip."
+        }
+      />
+
+      <InformationForm />
+    </CreatePageContainer>
   );
 };
 

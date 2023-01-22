@@ -52,7 +52,7 @@ const CategoryList = () => {
 
   return (
     <form id="createItineraryForm" onSubmit={onSubmit}>
-      <div className="grid grid-cols-6 gap-x-2 gap-y-5 mt-10">
+      <div className="grid grid-cols-6 gap-x-2 gap-y-5">
         {categoriesItems.map((item) => {
           const active =
             selected.findIndex((selectedItem) => selectedItem === item.id) !==

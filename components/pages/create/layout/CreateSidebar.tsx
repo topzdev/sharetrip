@@ -1,11 +1,10 @@
+import AppLogo from "@/components/layout/common/AppLogo";
 import Stepper from "@/components/steppers/Stepper";
 import SubStepper from "@/components/steppers/SubStepper";
 import useCreateItineraryPageInfo from "@/hooks/useCreateItineraryPageInfo";
 import useStepperType from "hooks/useStepperType";
 import { observer } from "mobx-react-lite";
-import { useRouter } from "next/router";
 import createItineraryStore from "stores/createItinerary";
-import AppLogo from "../AppLogo";
 
 type Props = {};
 

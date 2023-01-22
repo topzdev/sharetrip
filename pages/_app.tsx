@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import "@/styles/react-datepicker.css";
 import type { AppProps } from "next/app";
 import React, { useState } from "react";
 import { NextPage } from "next";

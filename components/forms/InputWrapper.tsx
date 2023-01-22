@@ -20,16 +20,18 @@ export type InputProps = {
   id?: string;
   name: string;
   label: string | React.ReactElement;
-  placeholder: string;
-  type: "text" | "number";
-  value: any;
+  placeholder?: string;
+  type?: "text" | "number";
+  value?: any;
   required?: boolean;
   preprendIcon?: React.ReactElement;
   appendIcon?: React.ReactElement;
   disabled?: boolean;
-  error: boolean | string | string[];
-  onChange: (value: any) => void;
-  children: (props: ChildrenWithProps) => React.ReactElement;
+  error?: boolean | string | string[];
+  onChange?: (value: any) => void;
+  children?: (
+    props: ChildrenWithProps
+  ) => React.ReactElement | React.ReactElement[] | "";
 };
 
 const InputIcon: React.FC<{
@@ -81,9 +83,9 @@ const defualtclassNames = {
   parent: [
     "flex flex-col align-start border-2 rounded-md py-[5px] px-2 transition ease-in group",
   ],
-  label: [""],
+  label: ["text-sm font-bold"],
   inputWrapper: ["w-full transition ease-in flex items-center py-[3px]"],
-  input: ["outline-0 w-full text-lg"],
+  input: ["outline-0 w-full text-base"],
 };
 
 const InputWrapper: React.FC<InputProps> = ({
@@ -152,17 +154,18 @@ const InputWrapper: React.FC<InputProps> = ({
             <InputIcon position="left" icon={preprendIcon} classList={""} />
           )}
 
-          {children({
-            required,
-            inputClassname,
-            type,
-            placeholder,
-            id,
-            name,
-            onChange,
-            value,
-            disabled,
-          })}
+          {children &&
+            children({
+              required,
+              inputClassname,
+              type,
+              placeholder,
+              id,
+              name,
+              onChange,
+              value,
+              disabled,
+            })}
 
           {appendIcon && <InputIcon position="left" icon={appendIcon} />}
         </div>

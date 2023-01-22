@@ -8,7 +8,7 @@ import React, {
 } from "react";
 import AppLogo from "./AppLogo";
 import Image from "next/image";
-import SearchBar from "../inputs/SearchBar";
+import SearchBar from "@/components/inputs/SearchBar";
 import { useWindowScroll } from "react-use";
 
 const curentUser = {
