@@ -35,7 +35,7 @@ export default {
     };
   },
 
-  create: (id: number) => {
+  create: (id?: number | null) => {
     const parentPath = `/itinerary/${id}`;
 
     return {
@@ -49,12 +49,76 @@ export default {
             title: subTitle,
             subPages: {
               categories: {
-                title: `${subTitle} - Categories`,
-                to: `${parentPath}/${subPath}/category`,
+                title: `Categories`,
+                to: `${parentPath}/${subPath}/categories`,
+                raw: `/${subPath}/categories`,
               },
               information: {
-                title: `${subTitle} - Information`,
+                title: `Information`,
                 to: `${parentPath}/${subPath}/information`,
+                raw: `/${subPath}/information`,
+              },
+              photos: {
+                title: `Photos`,
+                to: `${parentPath}/${subPath}/photos`,
+                raw: `/${subPath}/photos`,
+              },
+              itinerary: {
+                title: `Itinerary`,
+                to: `${parentPath}/${subPath}/itinerary`,
+                raw: `/${subPath}/itinerary`,
+              },
+            },
+          };
+        })(),
+
+        additional: (() => {
+          const subPath = "additional";
+          const subTitle = "Additonal";
+          return {
+            title: subTitle,
+            subPages: {
+              tipsReminder: {
+                title: `Tips and Reminder`,
+                to: `${parentPath}/${subPath}/tips-and-reminder`,
+                raw: `/${subPath}/tips-and-reminder`,
+              },
+              expenses: {
+                title: `Expenses`,
+                to: `${parentPath}/${subPath}/expenses`,
+                raw: `/${subPath}/expenses`,
+              },
+
+              toolsApps: {
+                title: `Tools and Apps`,
+                to: `${parentPath}/${subPath}/tools-and-apps`,
+                raw: `/${subPath}/tools-and-apps`,
+              },
+
+              difficulty: {
+                title: `Dificulty`,
+                to: `${parentPath}/${subPath}/difficulty`,
+                raw: `/${subPath}/difficulty`,
+              },
+            },
+          };
+        })(),
+
+        submission: (() => {
+          const subPath = "submission";
+          const subTitle = "Submission";
+          return {
+            title: subTitle,
+            subPages: {
+              review: {
+                title: `Review`,
+                to: `${parentPath}/${subPath}/review`,
+                raw: `/${subPath}/review`,
+              },
+              final: {
+                title: `Final`,
+                to: `${parentPath}/${subPath}/final`,
+                raw: `/${subPath}/final`,
               },
             },
           };

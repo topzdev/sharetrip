@@ -90,7 +90,7 @@ function SubStepper({
   };
 
   const MenuRight = () =>
-    type === "current" ? (
+    active ? (
       <Icon className="h-[16px] text-primary-500" path={mdiMenuRight}></Icon>
     ) : (
       <></>
@@ -100,7 +100,6 @@ function SubStepper({
     return (
       <>
         <MenuRight />
-        {type}
         <span className={style.text}>{title}</span>
         <CheckMark />
         <LockStatus />

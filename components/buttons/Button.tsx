@@ -142,7 +142,7 @@ const Button: React.FC<Props> = ({
 }) => {
   let typeStyle = {
     parent: [
-      "flex items-center rounded-md border-2 font-bold transition ease-in",
+      "flex items-center rounded-md border-2 font-bold transition ease-in select-none",
     ],
     icon: [""],
   };

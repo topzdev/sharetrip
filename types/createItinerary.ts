@@ -9,6 +9,6 @@ export type CreateStep = {
   subSteps?: CreateStep[] | null;
 };
 
-export type CreateStepForm = {
+export type CreateItineraryForm = {
   categories: number[];
 };
