@@ -23,6 +23,4 @@ Primary.args = {
   color: "primary",
   size: "base",
   variant: "filled",
-  // appendIcon: ,
-  prependIcon: <Icon path={mdiLock}></Icon>,
 };
