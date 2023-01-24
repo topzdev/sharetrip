@@ -5,7 +5,17 @@ import { makeAutoObservable } from "mobx";
 
 class CreateItineraryStore {
   currentStep: number = 0;
-  categories: CreateItineraryForm["categories"] = [];
+  form: CreateItineraryForm = {
+    categories: [],
+    information: {
+      travelPeriod: {
+        endDate: null,
+        startDate: null,
+      },
+      introduction: "",
+      title: "",
+    },
+  };
   loading: boolean = false;
   steps: CreateStep[] = [
     (() => {
@@ -232,7 +242,11 @@ class CreateItineraryStore {
   }
 
   setCategories(categories: CreateItineraryForm["categories"]) {
-    this.categories = categories;
+    this.form.categories = categories;
+  }
+
+  setInformation(information: CreateItineraryForm["information"]) {
+    this.form.information = information;
   }
 }
 

@@ -11,4 +11,12 @@ export type CreateStep = {
 
 export type CreateItineraryForm = {
   categories: number[];
+  information: {
+    travelPeriod: {
+      startDate: Date | null;
+      endDate: Date | null;
+    };
+    title: string;
+    introduction: string;
+  };
 };

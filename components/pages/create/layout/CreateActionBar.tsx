@@ -34,8 +34,8 @@ const CreateActionBar = (props: Props) => {
             label={"Next"}
             loading={loading}
             disabled={loading}
-            // form="createItineraryForm"
-            onClick={() => createItineraryStore.next()}
+            form="createItineraryForm"
+            // onClick={() => createItineraryStore.next()}
           />
         )}
       </div>

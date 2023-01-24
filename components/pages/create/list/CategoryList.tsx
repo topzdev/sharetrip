@@ -1,6 +1,6 @@
 import BoxSelect from "@/components/forms/BoxSelect";
 import { MAX_SELECT_CATEGORIES } from "@/configs/createConfigs";
-import { categoriesSchema } from "@/configs/validations/createItinerary";
+import { categoriesSchema } from "@/configs/fieldSchema/createItinerary";
 import categoriesItems from "@/data/categories";
 import { CreateItineraryForm } from "@/types/createItinerary";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -18,7 +18,7 @@ const CategoryList = () => {
     watch,
   } = useForm<CreateItineraryForm>({
     defaultValues: {
-      categories: createItineraryStore.categories,
+      categories: createItineraryStore.form.categories,
     },
     resolver: yupResolver(categoriesSchema),
   });
@@ -31,7 +31,7 @@ const CategoryList = () => {
       createItineraryStore.setLoading(false);
       createItineraryStore.setCategories(data.categories);
       createItineraryStore.next();
-    }, 5000);
+    }, 1000);
   });
 
   const selected = watch("categories");

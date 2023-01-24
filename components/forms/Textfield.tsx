@@ -11,20 +11,17 @@ const Textfield: React.FC<InputProps> = ({ ...props }) => {
         placeholder,
         id,
         name,
-        onChange,
         disabled,
         value,
+        label,
+        finalRegister,
       }) => (
         <input
           required={required}
           className={inputClassname}
           type={type}
           placeholder={placeholder}
-          id={id}
-          name={name}
-          onChange={onChange}
-          value={value}
-          disabled={disabled}
+          {...finalRegister}
         />
       )}
     </InputWrapper>

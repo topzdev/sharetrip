@@ -29,6 +29,7 @@ const DateRangePicker: React.FC<DateRagePickerProps> = ({
         name,
         disabled,
         value,
+        finalRegister,
       }) => (
         <CustomDatepicker
           id={id}

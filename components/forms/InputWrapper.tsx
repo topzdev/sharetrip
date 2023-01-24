@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import classnames from "classnames";
 import { error } from "console";
+import {
+  UseFormRegister,
+  FieldValues,
+  Path,
+  UseFormRegisterReturn,
+} from "react-hook-form";
 
 type ChildrenWithProps = Pick<
   InputProps,
@@ -10,15 +16,24 @@ type ChildrenWithProps = Pick<
   | "id"
   | "name"
   | "onChange"
+  | "onBlur"
   | "value"
   | "disabled"
+  | "label"
 > & {
   inputClassname?: string;
+  finalRegister:
+    | UseFormRegisterReturn<string>
+    | {
+        onChange: ((value: any) => void) | undefined;
+        onBlur: ((value: any) => void) | undefined;
+        required: boolean | undefined;
+      };
 };
 
-export type InputProps = {
+export type InputProps<T extends FieldValues = any> = {
   id?: string;
-  name: string;
+  name: Path<T>;
   label: string | React.ReactElement;
   placeholder?: string;
   type?: "text" | "number";
@@ -28,7 +43,9 @@ export type InputProps = {
   appendIcon?: React.ReactElement;
   disabled?: boolean;
   error?: boolean | string | string[];
+  register?: UseFormRegister<T>;
   onChange?: (value: any) => void;
+  onBlur?: (value: any) => void;
   children?: (
     props: ChildrenWithProps
   ) => React.ReactElement | React.ReactElement[] | "";
@@ -95,12 +112,14 @@ const InputWrapper: React.FC<InputProps> = ({
   placeholder,
   type = "text",
   onChange,
+  onBlur,
   value,
   disabled,
   required,
   appendIcon,
   preprendIcon,
   error = false,
+  register,
   children,
 }) => {
   let [errorMessage, setErrorMessage] = useState("");
@@ -119,6 +138,8 @@ const InputWrapper: React.FC<InputProps> = ({
       setErrorMessage(error);
     } else if (Array.isArray(error)) {
       setErrorMessage(error[0]);
+    } else {
+      setErrorMessage("");
     }
   }, [typeof error !== "boolean"]);
 
@@ -139,6 +160,10 @@ const InputWrapper: React.FC<InputProps> = ({
     overideClassnames.label
   );
 
+  const finalRegister = register
+    ? register(name, { required, onChange, onBlur })
+    : { onChange, onBlur, required, name, id, disabled, value };
+
   return (
     <div>
       <div className={parentClassname}>
@@ -156,6 +181,7 @@ const InputWrapper: React.FC<InputProps> = ({
 
           {children &&
             children({
+              label,
               required,
               inputClassname,
               type,
@@ -165,6 +191,7 @@ const InputWrapper: React.FC<InputProps> = ({
               onChange,
               value,
               disabled,
+              finalRegister,
             })}
 
           {appendIcon && <InputIcon position="left" icon={appendIcon} />}
