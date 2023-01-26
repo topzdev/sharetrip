@@ -1,10 +1,6 @@
-import { TailwindColors } from "@/types/configs";
-import React, { Children, ReactElement } from "react";
-import colorClasses from "tailwindcss/defaultConfig";
-import { mdiLoading } from "@mdi/js";
-import Icon from "@mdi/react";
 import classnames from "classnames";
-import { componentColors } from "../../configs/styleColors";
+import React, { ReactElement, useState } from "react";
+import { colorsVariantWithState } from "../../configs/styleColors";
 
 type Props = {
   className?: string;
@@ -95,27 +91,11 @@ const Button: React.FC<Props> = ({
     icon: [""],
   };
 
-  const { border, text, tonal, background } =
-    componentColors[disabled ? "disabled" : color];
-  if (!disabled) {
-    switch (variant) {
-      case "outlined":
-        typeStyle.parent.push(border, text);
-        break;
-      case "filled":
-        typeStyle.parent.push(background, "text-white", border);
-        break;
-      case "tonal":
-        typeStyle.parent.push(tonal, text, "border-transparent");
-        break;
-      case "text":
-        typeStyle.parent.push(text, "border-transparent");
-        break;
-    }
-  } else {
-    typeStyle.parent.push(background, border, text);
-  }
+  colorsVariantWithState["disabled"];
 
+  typeStyle.parent.push(
+    colorsVariantWithState[disabled ? "disabled" : color][variant]
+  );
   typeStyle.parent.push(sizes[size]);
   typeStyle.icon.push(iconSizes[size]);
 

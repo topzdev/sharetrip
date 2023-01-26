@@ -26,4 +26,12 @@ module.exports = {
   "core": {
     builder: '@storybook/builder-webpack5',
   },
+  previewHead: (head) => (`
+     ${head}
+    <style>
+      #main {
+        background-color: yellow;
+      }
+    </style>
+  `)
 }

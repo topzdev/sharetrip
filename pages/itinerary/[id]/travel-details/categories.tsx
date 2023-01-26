@@ -1,3 +1,4 @@
+import Alert from "@/components/alerts/Alert";
 import CreateLayout from "@/components/layout/create";
 import CreatePageContainer from "@/components/pages/create/CreatePageContainer";
 import CreatePageHeader from "@/components/pages/create/layout/CreatePageHeader";
@@ -12,6 +13,8 @@ const TravelDetailsCategoryPage = ({}) => {
           "Select at least 1 and up to 5 travel category for this itinerary."
         }
       />
+
+      <Alert label={"Hello, World!"} show={true} />
 
       <CategoryList />
     </CreatePageContainer>
