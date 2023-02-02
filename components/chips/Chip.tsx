@@ -1,12 +1,17 @@
-import { componentColors } from "../../configs/styleColors";
+import {
+  Colors,
+  colorsVariants,
+  colorsVariantWithState,
+  Variants,
+} from "@/configs/styleColors";
 import classnames from "classnames";
 import React, { ReactElement } from "react";
 
 type Props = {
   className?: string;
   disabled?: boolean;
-  variant?: "outlined" | "filled" | "tonal" | "text";
-  color?: "primary" | "secondary" | "error" | "info" | "success" | "warning";
+  variant?: Variants;
+  color?: Colors;
   size?: "xs" | "sm" | "base" | "lg" | "xl";
   prependIcon?: React.ReactElement;
   appendIcon?: React.ReactElement;
@@ -67,28 +72,8 @@ const Chip: React.FC<Props> = ({
     icon: [""],
   };
 
-  const { border, text, tonal, background } =
-    componentColors[disabled ? "disabled" : color];
-  if (!disabled) {
-    switch (variant) {
-      case "outlined":
-        typeStyle.parent.push(border, text);
-        break;
-      case "filled":
-        typeStyle.parent.push(background, "text-white", border);
-        break;
-      case "tonal":
-        typeStyle.parent.push(tonal, text, "border-transparent");
-        break;
-      case "text":
-        typeStyle.parent.push(text, "border-transparent");
-        break;
-    }
-  } else {
-    typeStyle.parent.push(background, border, text);
-  }
-
-  typeStyle.parent.push(rounded ? "rounded-full px-2" : "rounded-md px-1");
+  typeStyle.parent.push(colorsVariants[disabled ? "disabled" : color][variant]);
+  typeStyle.parent.push(rounded ? "rounded-full px-3" : "rounded-md px-2");
   typeStyle.parent.push(sizes[size]);
   typeStyle.icon.push(iconSizes[size]);
 

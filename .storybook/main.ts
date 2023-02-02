@@ -1,37 +1,42 @@
 const path = require("path");
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 module.exports = {
-  "stories": [
+  stories: [
     "../stories/**/*.stories.mdx",
     "../stories/**/*.stories.@(js|jsx|ts|tsx)",
-    "../components/**/*.stories.@(js|jsx|ts|tsx)"
+    "../components/**/*.stories.@(js|jsx|ts|tsx)",
   ],
-  "addons": [
+  addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
     {
-      name: '@storybook/addon-postcss',
+      name: "@storybook/addon-postcss",
       options: {
         cssLoaderOptions: {
-          importLoaders: 1
+          importLoaders: 1,
         },
         postcssLoaderOptions: {
-          implementation: require('postcss')
-        }
-      }
-    }
+          implementation: require("postcss"),
+        },
+      },
+    },
   ],
-  "framework": "@storybook/react",
-  "core": {
-    builder: '@storybook/builder-webpack5',
+  framework: "@storybook/react",
+  core: {
+    builder: "@storybook/builder-webpack5",
   },
-  previewHead: (head) => (`
+  webpackFinal: async (config, { configType }) => {
+    config.resolve.plugins = [new TsconfigPathsPlugin()];
+    return config;
+  },
+  previewHead: (head) => `
      ${head}
     <style>
       #main {
         background-color: yellow;
       }
     </style>
-  `)
-}
+  `,
+};

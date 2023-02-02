@@ -15,6 +15,54 @@ class CreateItineraryStore {
       introduction: "",
       title: "",
     },
+
+    photos: [
+      {
+        id: 1,
+        is_main_cover: true,
+        is_post_cover: false,
+        src: "https://images.unsplash.com/photo-1563166796-befbbd534d1b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+        height: 1170,
+        width: 780,
+        title: "Hello, World",
+        description: "Testttt",
+        deletable: false,
+      },
+      {
+        id: 2,
+        is_main_cover: false,
+        is_post_cover: true,
+        src: "https://images.unsplash.com/photo-1513326738677-b964603b136d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=749&q=80",
+        height: 968,
+        width: 749,
+        title: "",
+        description: "",
+        deletable: false,
+      },
+
+      {
+        id: 3,
+        is_main_cover: false,
+        is_post_cover: false,
+        src: "https://images.unsplash.com/photo-1588698947572-5563eed6d86a?ixlib=rb-4.0.3&ixid=mnwxmja3fdb8mhxwag90by1wywdlfhx8fgvufdb8fhx8&auto=format&fit=crop&w=735&q=80",
+        height: 569,
+        width: 758,
+        title: "",
+        description: "",
+        deletable: true,
+      },
+      {
+        id: 4,
+        is_main_cover: false,
+        is_post_cover: false,
+        src: "https://images.unsplash.com/photo-1545506523-9b0adeb12f9d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1026&q=80",
+        height: 821,
+        width: 1026,
+        title: "",
+        description: "",
+        deletable: true,
+      },
+    ],
   };
   loading: boolean = false;
   steps: CreateStep[] = [

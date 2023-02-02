@@ -2,7 +2,7 @@ import Alert from "@/components/alerts/Alert";
 import CreateLayout from "@/components/layout/create";
 import CreatePageContainer from "@/components/pages/create/CreatePageContainer";
 import CreatePageHeader from "@/components/pages/create/layout/CreatePageHeader";
-import CategoryList from "@/components/pages/create/list/CategoryList";
+import CategoryForm from "@/components/pages/create/category/CategoryForm";
 
 const TravelDetailsCategoryPage = ({}) => {
   return (
@@ -14,9 +14,7 @@ const TravelDetailsCategoryPage = ({}) => {
         }
       />
 
-      <Alert label={"Hello, World!"} show={true} />
-
-      <CategoryList />
+      <CategoryForm />
     </CreatePageContainer>
   );
 };

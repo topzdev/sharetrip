@@ -23,5 +23,4 @@ Default.args = {
   dismissable: true,
   show: true,
   label: "Hello, World!",
-  timeout: false,
 };

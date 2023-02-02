@@ -1,6 +1,6 @@
 import CreateLayout from "@/components/layout/create";
 import CreatePageContainer from "@/components/pages/create/CreatePageContainer";
-import InformationForm from "@/components/pages/create/forms/InformationForm";
+import InformationForm from "@/components/pages/create/information/InformationForm";
 import CreatePageHeader from "@/components/pages/create/layout/CreatePageHeader";
 
 type Props = {};

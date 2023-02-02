@@ -6,7 +6,6 @@ import { NextPage } from "next";
 import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
 
 import { Merriweather, Open_Sans, Work_Sans } from "@next/font/google";
-import { colorsVariantWithState } from "@/configs/styleColors";
 
 const merriweather = Merriweather({
   variable: "--font-merriweather",
@@ -25,8 +24,6 @@ type ComponentWithPageLayout = AppProps & {
 };
 
 export default function App({ Component, pageProps }: ComponentWithPageLayout) {
-  console.log("Hello", colorsVariantWithState);
-
   const PageContent = () => (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>

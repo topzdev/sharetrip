@@ -1,6 +1,7 @@
 import classNames from "classnames";
 
-type Colors =
+export type Colors =
+  | "default"
   | "primary"
   | "secondary"
   | "error"
@@ -8,9 +9,16 @@ type Colors =
   | "success"
   | "warning";
 
-type Variant = "filled" | "outlined" | "tonal" | "text";
+export type Variants = "filled" | "outlined" | "tonal" | "text";
 
 export const colorsVarianState = {
+  default: {
+    outlined: "hover:bg-white active:bg-white hover:bg-black",
+    filled: "hover:bg-white active:bg-white hover:bg-white active:bg-white",
+    tonal: "hover:bg-white/[8%] active:bg-white/[12%] hover:bg-black",
+    text: "hover:bg-black",
+  },
+
   primary: {
     outlined:
       "hover:border-primary-400 active:border-primary-500 hover:text-primary-400",
@@ -20,9 +28,10 @@ export const colorsVarianState = {
       "hover:bg-primary-500/[8%] active:bg-primary-500/[12%] hover:text-primary-400",
     text: "hover:text-primary-400",
   },
+
   secondary: {
     outlined:
-      "hover:border-slate-600 active:border-slate-800 hover:text-primary-600 ",
+      "hover:border-slate-600 active:border-slate-800 hover:text-slate-600 ",
     filled:
       "hover:bg-slate-600 active:bg-slate-800 hover:border-slate-600 active:border-slate-800",
     tonal:
@@ -71,7 +80,13 @@ export const colorsVarianState = {
   },
 };
 
-export const colorsVariant = {
+export const colorsVariants = {
+  default: {
+    outlined: "bg-white text-black",
+    filled: "text-black border-white bg-white",
+    tonal: "border-transparent bg-white/10 text-black",
+    text: "border-transparent text-black",
+  },
   primary: {
     outlined: "border-primary-500 text-primary-500",
     filled: "text-white bg-primary border-primary-500",
@@ -117,17 +132,19 @@ export const colorsVariant = {
 };
 
 type ColorsVariants = {
-  disabled: Record<Variant, string>;
-  primary: Record<Variant, string>;
-  secondary: Record<Variant, string>;
-  error: Record<Variant, string>;
-  info: Record<Variant, string>;
-  success: Record<Variant, string>;
-  warning: Record<Variant, string>;
+  default: Record<Variants, string>;
+  disabled: Record<Variants, string>;
+  primary: Record<Variants, string>;
+  secondary: Record<Variants, string>;
+  error: Record<Variants, string>;
+  info: Record<Variants, string>;
+  success: Record<Variants, string>;
+  warning: Record<Variants, string>;
 };
 
 const merger = () => {
   let temp = {
+    default: {},
     disabled: {},
     primary: {},
     secondary: {},
@@ -137,22 +154,22 @@ const merger = () => {
     warning: {},
   };
 
-  Object.keys(colorsVariant).forEach((item) => {
+  Object.keys(colorsVariants).forEach((item) => {
     temp[item as Colors] = {
       outlined: classNames(
-        colorsVariant[item as Colors].outlined,
+        colorsVariants[item as Colors].outlined,
         colorsVarianState[item as Colors].outlined
       ),
       filled: classNames(
-        colorsVariant[item as Colors].filled,
+        colorsVariants[item as Colors].filled,
         colorsVarianState[item as Colors].filled
       ),
       tonal: classNames(
-        colorsVariant[item as Colors].tonal,
+        colorsVariants[item as Colors].tonal,
         colorsVarianState[item as Colors].tonal
       ),
       text: classNames(
-        colorsVariant[item as Colors].text,
+        colorsVariants[item as Colors].text,
         colorsVarianState[item as Colors].text
       ),
     };

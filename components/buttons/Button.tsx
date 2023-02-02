@@ -1,12 +1,16 @@
 import classnames from "classnames";
 import React, { ReactElement, useState } from "react";
-import { colorsVariantWithState } from "../../configs/styleColors";
+import {
+  Colors,
+  colorsVariantWithState,
+  Variants,
+} from "../../configs/styleColors";
 
 type Props = {
   className?: string;
   disabled?: boolean;
-  variant?: "outlined" | "filled" | "tonal" | "text";
-  color?: "primary" | "secondary" | "error" | "info" | "success" | "warning";
+  variant?: Variants;
+  color?: Colors;
   size?: "xs" | "sm" | "base" | "lg" | "xl";
   prependIcon?: React.ReactElement;
   appendIcon?: React.ReactElement;
@@ -14,6 +18,7 @@ type Props = {
   children?: React.ReactElement;
   label: string;
   form?: string;
+  rounded?: boolean;
   onClick?: () => void;
 };
 
@@ -83,6 +88,7 @@ const Button: React.FC<Props> = ({
   disabled,
   children,
   onClick,
+  rounded = false,
 }) => {
   let typeStyle = {
     parent: [
@@ -91,13 +97,12 @@ const Button: React.FC<Props> = ({
     icon: [""],
   };
 
-  colorsVariantWithState["disabled"];
-
   typeStyle.parent.push(
     colorsVariantWithState[disabled ? "disabled" : color][variant]
   );
   typeStyle.parent.push(sizes[size]);
   typeStyle.icon.push(iconSizes[size]);
+  typeStyle.parent.push(rounded ? "rounded-full" : "");
 
   const parentClass = classnames(typeStyle.parent, className);
 

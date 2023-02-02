@@ -9,6 +9,18 @@ export type CreateStep = {
   subSteps?: CreateStep[] | null;
 };
 
+export type CreatePhoto = {
+  id: number;
+  is_main_cover: boolean;
+  is_post_cover: boolean;
+  src: string;
+  width: number;
+  height: number;
+  title: string;
+  description: string;
+  deletable: boolean;
+};
+
 export type CreateItineraryForm = {
   categories: number[];
   information: {
@@ -19,4 +31,5 @@ export type CreateItineraryForm = {
     title: string;
     introduction: string;
   };
+  photos: CreatePhoto[];
 };
