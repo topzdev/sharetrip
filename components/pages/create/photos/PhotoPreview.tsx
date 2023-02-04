@@ -1,11 +1,21 @@
+import Button from "@/components/buttons/Button";
 import Chip from "@/components/chips/Chip";
-import { CreatePhoto } from "@/types/createItinerary";
+import { CreatePhoto, PhotoPreviewType } from "@/types/createItinerary";
+import classNames from "classnames";
 import Image from "next/image";
 import React from "react";
 
-type Props = { photo: CreatePhoto; others?: boolean };
+type Props = {
+  photo: CreatePhoto;
+  type: PhotoPreviewType;
+  isDragging?: boolean;
+  isSorting?: boolean;
+};
 
-const PhotoTopTag: React.FC<{ type: "main" | "post" | false }> = ({ type }) => {
+export const photoPreviewSize = (type: PhotoPreviewType) =>
+  type === "default" ? 230 : 290;
+
+const PhotoTopTag: React.FC<{ type: PhotoPreviewType }> = ({ type }) => {
   let title = "";
 
   switch (type) {
@@ -18,7 +28,7 @@ const PhotoTopTag: React.FC<{ type: "main" | "post" | false }> = ({ type }) => {
 
   return (
     <>
-      {type && (
+      {title && (
         <Chip
           className="absolute top-3 left-3 font-semibold"
           label={title}
@@ -29,34 +39,67 @@ const PhotoTopTag: React.FC<{ type: "main" | "post" | false }> = ({ type }) => {
   );
 };
 
-const PhotoPreview: React.FC<Props> = ({ photo, others }) => {
-  const height = others ? "250px" : "330px";
+const PhotoBottomTag: React.FC<{ hasInfo: boolean }> = ({ hasInfo }) => {
   return (
-    <div
-      style={{ minHeight: height, maxHeight: height, height }}
-      className={`relative rounded-lg overflow-hidden h-full cursor-pointer  shadow-none hover:shadow-lg transition-all ease-in`}>
-      <PhotoTopTag
-        type={
-          photo.is_main_cover ? "main" : photo.is_post_cover ? "post" : false
-        }
-      />
-
-      <Image
-        className="h-full w-full object-cover object-center select-none"
-        src={photo.src}
-        alt={photo.title || "Photo"}
-        width={photo.width}
-        height={photo.height}
-        draggable={false}
-      />
-
-      {photo.title && photo.description && (
+    <>
+      {hasInfo ? (
         <Chip
-          // size="lg"
-          className="absolute bottom-3 right-3 bg-slate-800/40 border-transparent uppercase"
+          className="absolute bottom-3 right-3 bg-slate-800/50 border-transparent uppercase border-none font-bold"
           color="secondary"
           label="Info"
         />
+      ) : (
+        <Button
+          className="absolute bottom-3 right-3"
+          size="xs"
+          color="secondary"
+          label="Add Info"
+        />
+      )}
+    </>
+  );
+};
+
+const PhotoPreview: React.FC<Props> = ({
+  photo,
+  type,
+  isDragging,
+  isSorting,
+}) => {
+  const defualtclassNames = [
+    "relative rounded-md overflow-hidden h-full cursor-pointer  shadow-none hover:shadow-lg transition-all ease-in hover:border-primary border-2 border- border-slate-100 opacity-100",
+  ];
+
+  if (isDragging) {
+    defualtclassNames.push("opacity-50");
+  }
+
+  const height = photoPreviewSize(type);
+  const finalClassNames = classNames(defualtclassNames);
+  return (
+    <div
+      style={{
+        minHeight: height,
+        maxHeight: height,
+        height,
+        transformOrigin: "0 0",
+      }}
+      className={finalClassNames}>
+      {!isSorting && <PhotoTopTag type={type} />}
+
+      {photo.src && (
+        <Image
+          className="h-full w-full object-cover object-center select-none"
+          src={photo.src as string}
+          alt={photo.title || "Photo"}
+          width={photo.width}
+          height={photo.height}
+          draggable={false}
+        />
+      )}
+
+      {!isSorting && (
+        <PhotoBottomTag hasInfo={!!(photo.title && photo.description)} />
       )}
     </div>
   );

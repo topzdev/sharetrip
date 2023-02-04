@@ -10,10 +10,8 @@ export type CreateStep = {
 };
 
 export type CreatePhoto = {
-  id: number;
-  is_main_cover: boolean;
-  is_post_cover: boolean;
-  src: string;
+  id?: number | string;
+  src: string | ArrayBuffer | null;
   width: number;
   height: number;
   title: string;
@@ -33,3 +31,5 @@ export type CreateItineraryForm = {
   };
   photos: CreatePhoto[];
 };
+
+export type PhotoPreviewType = "full" | "main" | "post" | "default";
