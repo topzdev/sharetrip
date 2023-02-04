@@ -9,6 +9,10 @@ import Icon from "@mdi/react";
 type Props = {};
 
 const TravelDetailsPhotos = ({}) => {
+  const openPhotoUploader = () => {
+    document.getElementById("photoUploader")?.click();
+  };
+
   return (
     <CreatePageContainer>
       <CreatePageHeader
@@ -22,6 +26,7 @@ const TravelDetailsPhotos = ({}) => {
           color="secondary"
           label="Upload"
           rounded
+          onClick={openPhotoUploader}
         />
       </CreatePageHeader>
 

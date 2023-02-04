@@ -42,6 +42,12 @@ export default function App({ Component, pageProps }: ComponentWithPageLayout) {
       ) : (
         <PageContent />
       )}
+
+      <div id="headlessui-portal-root">
+        {/* It needs at least one child, so that HeadlessUI doesn't remove this portal root workaround
+        ( https://github.com/tailwindlabs/headlessui/blob/main/packages/@headlessui-react/src/components/portal/portal.tsx#L84 ) */}
+        <div />
+      </div>
     </main>
   );
 }

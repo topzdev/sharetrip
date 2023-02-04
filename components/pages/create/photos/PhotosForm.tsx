@@ -12,6 +12,9 @@ import {
   DragEndEvent,
   DragStartEvent,
   DragOverlay,
+  useSensors,
+  PointerSensor,
+  useSensor,
 } from "@dnd-kit/core";
 import { nanoid } from "nanoid";
 
@@ -21,6 +24,7 @@ import {
   rectSortingStrategy,
   rectSwappingStrategy,
 } from "@dnd-kit/sortable";
+import UpdatePhotoInfo from "./UpdatePhotoInfo";
 
 type Props = {};
 
@@ -40,6 +44,14 @@ const PhotosForm: React.FC<Props> = ({}) => {
   const [photos, setPhotos] = useState<CreatePhoto[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
   const photoAddType = photos.length ? "default" : "full";
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 8,
+      },
+    })
+  );
+
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
 
@@ -98,6 +110,7 @@ const PhotosForm: React.FC<Props> = ({}) => {
         onDragEnd={handleDragEnd}
         onDragStart={handleDragStart}
         onDragCancel={handleDragCancel}
+        sensors={sensors}
         id="photoForm">
         <div className="grid grid-cols-6 gap-3">
           <SortableContext
@@ -145,7 +158,7 @@ const PhotosForm: React.FC<Props> = ({}) => {
                           type={type}>
                           {({ isDragging, isSorting }) => (
                             <PhotoPreview
-                              isDragging={isDragging}
+                              isDragging={true}
                               isSorting={true}
                               photo={photo}
                               type={type}
@@ -160,6 +173,8 @@ const PhotosForm: React.FC<Props> = ({}) => {
           </SortableContext>
         </div>
       </DndContext>
+
+      <UpdatePhotoInfo />
     </div>
   );
 };

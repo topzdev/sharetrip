@@ -85,7 +85,7 @@ const PhotoPreview: React.FC<Props> = ({
         transformOrigin: "0 0",
       }}
       className={finalClassNames}>
-      {!isSorting && <PhotoTopTag type={type} />}
+      {!isDragging && <PhotoTopTag type={type} />}
 
       {photo.src && (
         <Image
@@ -98,7 +98,7 @@ const PhotoPreview: React.FC<Props> = ({
         />
       )}
 
-      {!isSorting && (
+      {!isDragging && (
         <PhotoBottomTag hasInfo={!!(photo.title && photo.description)} />
       )}
     </div>

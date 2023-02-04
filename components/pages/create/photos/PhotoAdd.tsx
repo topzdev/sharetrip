@@ -17,6 +17,7 @@ const PhotoAdd: React.FC<PhotoAddProps> = ({ handleFileChange, type }) => {
       className="relative p-4 border-2 border-dashed border-slate-200 hover:border-primary-500 transition-colors ease-in rounded-md overflow-hidden h-full cursor-pointer flex flex-col items-center justify-center text-center bg-slate-100 hover:bg-primary-50/10 "
       style={{ minHeight: height, maxHeight: height, height }}>
       <input
+        id="photoUploader"
         type={"file"}
         className="absolute w-full h-full top-0 left-0 opacity-0 cursor-pointer"
         multiple

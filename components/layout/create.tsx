@@ -52,7 +52,7 @@ const CreateLayout: FunctionComponent<Props> = ({ children }) => {
 
       <div className="relative w-full overflow-auto max-h-screen">
         <CreatePageBar />
-        <div className="container mx-auto pb-[80px]">{children}</div>
+        <div className="container mx-auto pb-[100px]">{children}</div>
         <CreateActionBar />
       </div>
     </div>
