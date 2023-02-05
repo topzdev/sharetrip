@@ -10,6 +10,7 @@ type Props = {
   type: PhotoPreviewType;
   isDragging?: boolean;
   isSorting?: boolean;
+  onSetCurrentPhoto?: () => void;
 };
 
 export const photoPreviewSize = (type: PhotoPreviewType) =>
@@ -39,23 +40,19 @@ const PhotoTopTag: React.FC<{ type: PhotoPreviewType }> = ({ type }) => {
   );
 };
 
-const PhotoBottomTag: React.FC<{ hasInfo: boolean }> = ({ hasInfo }) => {
+const PhotoBottomTag: React.FC<{
+  hasInfo: boolean;
+  onSetCurrentPhoto: Props["onSetCurrentPhoto"];
+}> = ({ hasInfo, onSetCurrentPhoto }) => {
   return (
     <>
-      {hasInfo ? (
-        <Chip
-          className="absolute bottom-3 right-3 bg-slate-800/50 border-transparent uppercase border-none font-bold"
-          color="secondary"
-          label="Info"
-        />
-      ) : (
-        <Button
-          className="absolute bottom-3 right-3"
-          size="xs"
-          color="secondary"
-          label="Add Info"
-        />
-      )}
+      <Button
+        className={`absolute bottom-3 right-3 ${hasInfo && " uppercase"}`}
+        size="xs"
+        color="secondary"
+        label={!hasInfo ? "Add Info" : "Info"}
+        onClick={onSetCurrentPhoto}
+      />
     </>
   );
 };
@@ -65,6 +62,7 @@ const PhotoPreview: React.FC<Props> = ({
   type,
   isDragging,
   isSorting,
+  onSetCurrentPhoto,
 }) => {
   const defualtclassNames = [
     "relative rounded-md overflow-hidden h-full cursor-pointer  shadow-none hover:shadow-lg transition-all ease-in hover:border-primary border-2 border- border-slate-100 opacity-100",
@@ -99,7 +97,10 @@ const PhotoPreview: React.FC<Props> = ({
       )}
 
       {!isDragging && (
-        <PhotoBottomTag hasInfo={!!(photo.title && photo.description)} />
+        <PhotoBottomTag
+          onSetCurrentPhoto={onSetCurrentPhoto}
+          hasInfo={!!(photo.title && photo.description)}
+        />
       )}
     </div>
   );

@@ -1,4 +1,4 @@
-import { colorsVariant, colorsVariantWithState } from "@/configs/styleColors";
+import { colorsVariants, colorsVariantWithState } from "@/configs/styleColors";
 import {
   mdiAlert,
   mdiCheckCircle,
@@ -65,7 +65,7 @@ const Alert: React.FC<Props> = ({
   };
 
   classList.parent.push(
-    colorsVariant[type][variant],
+    colorsVariants[type][variant],
     alertDenseClass[dense ? "true" : "false"]
   );
 

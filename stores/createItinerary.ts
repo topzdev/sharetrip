@@ -288,6 +288,10 @@ class CreateItineraryStore {
   setInformation(information: CreateItineraryForm["information"]) {
     this.form.information = information;
   }
+
+  setPhotos(photos: CreateItineraryForm["photos"]) {
+    this.form.photos = photos;
+  }
 }
 
 const createItineraryStore = new CreateItineraryStore();

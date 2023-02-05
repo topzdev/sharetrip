@@ -41,6 +41,10 @@ import * as yup from "yup";
 //   },
 // };
 
+export const photosSchema = yup.object({
+  photos: yup.array().max(20).min(5),
+});
+
 export const categoriesSchema = yup.object({
   categories: yup.array().max(5).min(1),
 });

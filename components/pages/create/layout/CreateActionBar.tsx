@@ -28,6 +28,7 @@ const CreateActionBar = (props: Props) => {
 
         {current.next && (
           <Button
+            type="submit"
             className="ml-auto"
             color="primary"
             variant="filled"

@@ -1,6 +1,7 @@
 import Alert from "@/components/alerts/Alert";
 import BoxSelect from "@/components/forms/BoxSelect";
 import { MAX_SELECT_CATEGORIES } from "@/configs/createConfigs";
+import { alertDefault } from "@/configs/defaultValues";
 import { categoriesSchema } from "@/configs/fieldSchema/createItinerary";
 import categoriesItems from "@/data/categories";
 import { CreateItineraryForm } from "@/types/createItinerary";
@@ -11,6 +12,7 @@ import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import createItineraryStore from "stores/createItinerary";
+import CreateItineraryFormWrapper from "../CreateItineraryFormWrapper";
 
 const CategoryList = () => {
   const {
@@ -26,11 +28,7 @@ const CategoryList = () => {
     resolver: yupResolver(categoriesSchema),
   });
 
-  const [alert, setAlert] = useState({
-    show: false,
-    timeout: 10000,
-    message: "",
-  });
+  const [alert, setAlert] = useState(alertDefault);
 
   useEffect(() => {
     if (errors.categories && errors.categories.message) {
@@ -69,20 +67,13 @@ const CategoryList = () => {
     }
   };
 
-  return (
-    <form id="createItineraryForm" onSubmit={onSubmit}>
-      {alert.show && (
-        <Alert
-          type="error"
-          label={alert.message}
-          timeout={alert.timeout}
-          show={true}
-          className="mb-3"
-          variant="outlined"
-          onClose={() => setAlert((_alert) => ({ ...alert, show: false }))}
-        />
-      )}
+  const closeAlert = () => setAlert((_alert) => ({ ...alert, show: false }));
 
+  return (
+    <CreateItineraryFormWrapper
+      onSubmit={onSubmit}
+      alert={alert}
+      closeAlert={closeAlert}>
       <div className="grid grid-cols-6 gap-x-2 gap-y-5">
         {categoriesItems.map((item) => {
           const active =
@@ -101,7 +92,7 @@ const CategoryList = () => {
           );
         })}
       </div>
-    </form>
+    </CreateItineraryFormWrapper>
   );
 };
 

@@ -1,4 +1,5 @@
 import classnames from "classnames";
+import { type } from "os";
 import React, { ReactElement, useState } from "react";
 import {
   Colors,
@@ -11,7 +12,9 @@ type Props = {
   disabled?: boolean;
   variant?: Variants;
   color?: Colors;
+  type?: "submit" | "button" | "reset";
   size?: "xs" | "sm" | "base" | "lg" | "xl";
+  icon?: boolean;
   prependIcon?: React.ReactElement;
   appendIcon?: React.ReactElement;
   loading?: boolean;
@@ -80,6 +83,7 @@ const Button: React.FC<Props> = ({
   color = "primary",
   label = "Button",
   size = "base",
+  type = "button",
   form,
   className,
   prependIcon,
@@ -135,7 +139,7 @@ const Button: React.FC<Props> = ({
   };
 
   return (
-    <button form={form} className={parentClass} onClick={onClick}>
+    <button type={type} form={form} className={parentClass} onClick={onClick}>
       <PrependIcon />
       {label ? label : children}
       <AppendIcon />
