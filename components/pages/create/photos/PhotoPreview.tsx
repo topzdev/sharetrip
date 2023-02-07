@@ -11,6 +11,8 @@ type Props = {
   isDragging?: boolean;
   isSorting?: boolean;
   onSetCurrentPhoto?: () => void;
+  active?: boolean | null;
+  onClick?: () => void;
 };
 
 export const photoPreviewSize = (type: PhotoPreviewType) =>
@@ -63,19 +65,26 @@ const PhotoPreview: React.FC<Props> = ({
   isDragging,
   isSorting,
   onSetCurrentPhoto,
+  active = false,
+  onClick,
 }) => {
-  const defualtclassNames = [
-    "relative rounded-md overflow-hidden h-full cursor-pointer  shadow-none hover:shadow-lg transition-all ease-in hover:border-primary border-2 border- border-slate-100 opacity-100",
+  const defualtClassNames = [
+    "relative rounded-md overflow-hidden h-full cursor-pointer  shadow-none hover:shadow-lg transition-all ease-in hover:border-primary border-2 border-slate-100 opacity-100",
   ];
 
   if (isDragging) {
-    defualtclassNames.push("opacity-50");
+    defualtClassNames.push("opacity-50");
+  }
+
+  if (active) {
+    defualtClassNames.push("!border-primary !border-4");
   }
 
   const height = photoPreviewSize(type);
-  const finalClassNames = classNames(defualtclassNames);
+  const finalClassNames = classNames(defualtClassNames);
   return (
     <div
+      onClick={onClick}
       style={{
         minHeight: height,
         maxHeight: height,

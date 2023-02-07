@@ -51,11 +51,17 @@ const Alert: React.FC<Props> = ({
   onClose,
 }) => {
   useEffect(() => {
+    let currentTimeout: any = null;
+
     if (timeout && timeout > 0) {
-      setTimeout(() => {
+      currentTimeout = setTimeout(() => {
         if (onClose) onClose();
       }, timeout);
     }
+
+    return () => {
+      if (currentTimeout) clearTimeout(currentTimeout);
+    };
   }, [timeout && timeout > 0]);
 
   let classList = {

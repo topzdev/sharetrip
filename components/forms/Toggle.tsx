@@ -20,10 +20,10 @@ const style = {
     uncheckSwitch: "bg-slate-200",
   },
   disabled: {
-    label: "text-slate-300",
-    extraLabel: "text-slate-300",
-    checkedSwitch: "bg-slate-200",
-    uncheckSwitch: "bg-slate-200",
+    label: "text-primary/30",
+    extraLabel: "text-primary/30",
+    checkedSwitch: "bg-primary/30",
+    uncheckSwitch: "bg-primary/30",
   },
 };
 

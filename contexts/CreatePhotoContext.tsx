@@ -6,6 +6,7 @@ import createItineraryStore from "stores/createItinerary";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { photosSchema } from "@/configs/fieldSchema/createItinerary";
 import { alertDefault } from "@/configs/defaultValues";
+import { arrayMove } from "@dnd-kit/sortable";
 
 interface ContextProps {
   photos: CreatePhoto[];
@@ -22,6 +23,9 @@ interface ContextProps {
   onClearCurrentPhoto: () => void;
   onSetCurrentPhoto: (photo: CreatePhoto) => void;
   onDeletePhoto: () => void;
+  setPostCover: (photoId: CreatePhoto["id"]) => void;
+  setMainCover: (photoId: CreatePhoto["id"]) => void;
+  currentIndex: number | null;
 }
 
 const CreatePhotoContext = createContext<ContextProps>({
@@ -37,7 +41,13 @@ const CreatePhotoContext = createContext<ContextProps>({
   onClearCurrentPhoto: () => {},
   onSetCurrentPhoto: () => {},
   onDeletePhoto: () => {},
+  setMainCover: () => {},
+  setPostCover: () => {},
+  currentIndex: null,
 });
+
+export const mainCoverIdx = 0;
+export const postCoverIdx = 1;
 
 const CreatePhotoProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -46,6 +56,7 @@ const CreatePhotoProvider: React.FC<{ children: React.ReactNode }> = ({
     handleSubmit,
     formState: { errors },
     setValue,
+    clearErrors,
     watch,
   } = useForm<CreateItineraryForm>({
     defaultValues: {
@@ -56,13 +67,13 @@ const CreatePhotoProvider: React.FC<{ children: React.ReactNode }> = ({
   // const [photos, setPhotos] = useState<CreatePhoto[]>([]);
   const photos = watch("photos");
   const [alert, setAlert] = useState<AlertDefault>(alertDefault);
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const [currentPhoto, setCurrentPhoto] = useState<CreatePhoto | null>(null);
+  const [currentIndex, setCurrentIndex] = useState<number | null>(null);
 
   const setPhotos = (photos: CreatePhoto[]) => {
     setValue("photos", photos);
   };
-
-  const [activeId, setActiveId] = useState<string | null>(null);
-  const [currentPhoto, setCurrentPhoto] = useState<CreatePhoto | null>(null);
 
   const onSubmit = handleSubmit((data) => {
     createItineraryStore.setLoading(true);
@@ -79,19 +90,32 @@ const CreatePhotoProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const onUpdateCurrentPhoto = (photo: CreatePhoto) => {
-    console.log(photo);
-    window.alert("Hello Update: " + photo.id);
     setPhotos(photos.map((item) => (item.id === photo.id ? photo : item)));
     onClearCurrentPhoto();
   };
 
   const onSetCurrentPhoto = (photo: CreatePhoto) => {
     setCurrentPhoto(photo);
+    setCurrentIndex(photos.findIndex((item) => item.id === photo.id));
+  };
+
+  const setMainCover = (photoId: CreatePhoto["id"]) => {
+    if (!photoId) return;
+    const selectedPhotoIdx = photos.findIndex((item) => item.id === photoId);
+    setPhotos(arrayMove(photos, selectedPhotoIdx, mainCoverIdx));
+    onClearCurrentPhoto();
+  };
+
+  const setPostCover = (photoId: CreatePhoto["id"]) => {
+    if (!photoId) return;
+    const selectedPhotoIndex = photos.findIndex((item) => item.id === photoId);
+    setPhotos(arrayMove(photos, selectedPhotoIndex, postCoverIdx));
+    onClearCurrentPhoto();
   };
 
   const onDeletePhoto = () => {
     if (currentPhoto) {
-      setPhotos(photos.filter((item) => item.id === currentPhoto.id));
+      setPhotos(photos.filter((item) => item.id !== currentPhoto.id));
       onClearCurrentPhoto();
     }
   };
@@ -107,7 +131,8 @@ const CreatePhotoProvider: React.FC<{ children: React.ReactNode }> = ({
   }, [errors.photos?.message]);
 
   const closeAlert = () => {
-    setAlert({ ...alert, show: false });
+    clearErrors();
+    setAlert(alertDefault);
   };
 
   return (
@@ -125,6 +150,9 @@ const CreatePhotoProvider: React.FC<{ children: React.ReactNode }> = ({
         onClearCurrentPhoto,
         onSetCurrentPhoto,
         onDeletePhoto,
+        setMainCover,
+        setPostCover,
+        currentIndex,
       }}>
       {children}
     </CreatePhotoContext.Provider>

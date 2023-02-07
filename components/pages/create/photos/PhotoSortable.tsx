@@ -18,7 +18,7 @@ import {
   SortableContext,
 } from "@dnd-kit/sortable";
 import { nanoid } from "nanoid";
-import React, { useCallback, useContext } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import PhotoAdd from "./PhotoAdd";
 import PhotoPreview from "./PhotoPreview";
 import PhotoPreviewWrapper from "./PhotoPreviewWrapper";
@@ -29,8 +29,14 @@ const photoPreviewType = (idx: number) =>
   idx === 0 ? "main" : idx === 1 ? "post" : "default";
 
 const PhotoSortable: React.FC<PhotoSortableProps> = ({}) => {
-  const { photos, setPhotos, activeId, setActiveId, onSetCurrentPhoto } =
-    useContext(CreatePhotoContext);
+  const {
+    photos,
+    setPhotos,
+    activeId,
+    setActiveId,
+    onSetCurrentPhoto,
+    currentPhoto,
+  } = useContext(CreatePhotoContext);
 
   const photoAddType = photos.length ? "default" : "full";
 
@@ -49,6 +55,8 @@ const PhotoSortable: React.FC<PhotoSortableProps> = ({}) => {
       return;
     }
 
+    let tempPhotos: CreatePhoto[] = [];
+
     for (let i = 0; i < files.length; i++) {
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -56,8 +64,8 @@ const PhotoSortable: React.FC<PhotoSortableProps> = ({}) => {
         image.src = e.target?.result as string;
 
         image.onload = () => {
-          setPhotos([
-            ...photos,
+          tempPhotos = [
+            ...tempPhotos,
             {
               ...photoDefault,
               height: image.height,
@@ -65,9 +73,11 @@ const PhotoSortable: React.FC<PhotoSortableProps> = ({}) => {
               src: image.src,
               id: nanoid(),
             },
-          ]);
+          ];
+          setPhotos([...photos, ...tempPhotos]);
         };
       };
+
       reader.readAsDataURL(files[i]);
     }
   };
@@ -109,12 +119,14 @@ const PhotoSortable: React.FC<PhotoSortableProps> = ({}) => {
               <PhotoPreviewWrapper key={idx} id={item.id} type={type}>
                 {({ isDragging, isSorting }) => (
                   <PhotoPreview
-                    onSetCurrentPhoto={() => onSetCurrentPhoto(item)}
+                    // onSetCurrentPhoto={() => onSetCurrentPhoto(item)}
                     isDragging={isDragging}
                     isSorting={isSorting}
                     key={item.id}
                     photo={item}
                     type={type}
+                    active={currentPhoto && currentPhoto.id === item.id}
+                    onClick={() => onSetCurrentPhoto(item)}
                   />
                 )}
               </PhotoPreviewWrapper>

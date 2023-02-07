@@ -127,8 +127,6 @@ export const automateVariantStyle = (type: "default" | "hover") => {
     warning: {},
   };
 
-  // console.log(Object.keys(componentColors));
-
   Object.keys(componentColors).forEach((item, index) => {
     const { border, text, tonal, background } =
       type === "default"

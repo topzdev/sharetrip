@@ -16,23 +16,31 @@ const PhotosForm: React.FC<Props> = ({}) => {
     currentPhoto,
     onClearCurrentPhoto,
     onDeletePhoto,
+    currentIndex,
+    setMainCover,
+    setPostCover,
     onUpdateCurrentPhoto,
   } = useContext(CreatePhotoContext);
 
   return (
-    <CreateItineraryFormWrapper
-      onSubmit={onSubmit}
-      alert={alert}
-      closeAlert={closeAlert}>
-      <PhotoSortable />
+    <>
+      <CreateItineraryFormWrapper
+        onSubmit={onSubmit}
+        alert={alert}
+        closeAlert={closeAlert}>
+        <PhotoSortable />
+      </CreateItineraryFormWrapper>
       <UpdatePhotoInfo
-        info={currentPhoto}
+        info={currentPhoto!}
         show={!!currentPhoto}
         onDelete={onDeletePhoto}
         closeModal={onClearCurrentPhoto}
         setInfo={onUpdateCurrentPhoto}
+        photoIndex={currentIndex}
+        setMainCover={setMainCover}
+        setPostCover={setPostCover}
       />
-    </CreateItineraryFormWrapper>
+    </>
   );
 };
 

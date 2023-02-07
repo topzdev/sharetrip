@@ -33,6 +33,14 @@ const sizes = {
   xl: "py-[8px] px-6 text-xl",
 };
 
+const buttonIcon = {
+  xs: "py-[3px] px-2 text-xs",
+  sm: "py-[5px] px-3 text-sm",
+  base: "py-[6px] px-4 text-base",
+  lg: "py-[7px] px-5 text-lg",
+  xl: "py-[8px] px-6 text-xl",
+};
+
 const iconSizes = {
   xs: "child:h-[12px]",
   sm: "child:h-[14px]",

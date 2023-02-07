@@ -27,8 +27,6 @@ const BottomDashedStraight = observer(() => {
 
   const [type] = useStepperType({ done, active, locked });
 
-  console.log("Bottom Dash type", type, done, active, locked);
-
   let color = "border-slate-200";
 
   switch (type) {
@@ -56,7 +54,6 @@ const BottomDashedStraight = observer(() => {
 });
 
 const Sidebar = (props: Props) => {
-  console.log("Sidebar");
   const steps = createItineraryStore.steps;
   const { generateBaseLink } = useCreateItineraryPageInfo();
 

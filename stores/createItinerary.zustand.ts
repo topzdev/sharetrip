@@ -168,7 +168,6 @@ export const useCreateItinerary = create<CreateItineraryState>()(
 
     getters: {
       current() {
-        console.log("Current Renrender?");
         let prev = null,
           next = null,
           cur = null,
