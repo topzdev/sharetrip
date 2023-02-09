@@ -1,6 +1,9 @@
 import Button from "@/components/buttons/Button";
 import Chip from "@/components/chips/Chip";
+import Menu from "@/components/menu/Menu";
 import { CreatePhoto, PhotoPreviewType } from "@/types/createItinerary";
+import { mdiDotsVertical } from "@mdi/js";
+import Icon from "@mdi/react";
 import classNames from "classnames";
 import Image from "next/image";
 import React from "react";
@@ -35,7 +38,7 @@ const PhotoTopTag: React.FC<{ type: PhotoPreviewType }> = ({ type }) => {
         <Chip
           className="absolute top-3 left-3 font-semibold"
           label={title}
-          color="default"
+          color="black"
         />
       )}
     </>
@@ -93,6 +96,17 @@ const PhotoPreview: React.FC<Props> = ({
       }}
       className={finalClassNames}>
       {!isDragging && <PhotoTopTag type={type} />}
+
+      <Button
+        className="absolute right-0 top-0"
+        variant="text"
+        color="white"
+        size="xl"
+        icon>
+        <Icon path={mdiDotsVertical}></Icon>
+      </Button>
+
+      <Menu></Menu>
 
       {photo.src && (
         <Image

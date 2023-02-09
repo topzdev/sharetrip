@@ -15,11 +15,11 @@ type Props = {
   type?: "submit" | "button" | "reset";
   size?: "xs" | "sm" | "base" | "lg" | "xl";
   icon?: boolean;
-  prependIcon?: React.ReactElement;
-  appendIcon?: React.ReactElement;
+  prependIcon?: React.ReactNode;
+  appendIcon?: React.ReactNode;
   loading?: boolean;
-  children?: React.ReactElement;
-  label: string;
+  children?: React.ReactNode;
+  label?: React.ReactNode;
   form?: string;
   rounded?: boolean;
   onClick?: () => void;
@@ -34,11 +34,11 @@ const sizes = {
 };
 
 const buttonIcon = {
-  xs: "py-[3px] px-2 text-xs",
-  sm: "py-[5px] px-3 text-sm",
-  base: "py-[6px] px-4 text-base",
-  lg: "py-[7px] px-5 text-lg",
-  xl: "py-[8px] px-6 text-xl",
+  xs: "min-h-[24px] min-w-[24px]",
+  sm: "min-h-[26px] min-w-[26px]",
+  base: "min-h-[30px] min-w-[30px]",
+  lg: "min-h-[34px] min-w-[34px]",
+  xl: "min-h-[38px] min-w-[38px]",
 };
 
 const iconSizes = {
@@ -51,13 +51,13 @@ const iconSizes = {
 
 const ButtonIcon: React.FC<{
   classList: string[] | string;
-  position: "left" | "right";
-  icon?: ReactElement;
+  position?: "left" | "right";
+  icon?: React.ReactNode;
   size?: Props["size"];
 }> = ({ classList, position, icon, size = "base" }) => {
   const myClass = classnames(
     classList,
-    position === "left" ? "mr-2" : "ml-2",
+    position === "left" ? "mr-2" : position === "right" ? "ml-2" : "",
     iconSizes[size]
   );
 
@@ -89,9 +89,10 @@ const ButtonLoading = () => {
 const Button: React.FC<Props> = ({
   variant = "filled",
   color = "primary",
-  label = "Button",
+  label = "",
   size = "base",
   type = "button",
+  icon = false,
   form,
   className,
   prependIcon,
@@ -112,9 +113,14 @@ const Button: React.FC<Props> = ({
   typeStyle.parent.push(
     colorsVariantWithState[disabled ? "disabled" : color][variant]
   );
-  typeStyle.parent.push(sizes[size]);
   typeStyle.icon.push(iconSizes[size]);
-  typeStyle.parent.push(rounded ? "rounded-full" : "");
+
+  if (icon) {
+    typeStyle.parent.push(buttonIcon[size], "rounded-full justify-center");
+  } else {
+    typeStyle.parent.push(sizes[size]);
+    typeStyle.parent.push(rounded ? "rounded-full" : "");
+  }
 
   const parentClass = classnames(typeStyle.parent, className);
 
@@ -146,10 +152,21 @@ const Button: React.FC<Props> = ({
     );
   };
 
+  const ButtonText = () => {
+    const content = label ? label : children;
+    const renderChildren = icon ? (
+      <ButtonIcon classList={typeStyle.icon} icon={content}></ButtonIcon>
+    ) : (
+      content
+    );
+
+    return <>{renderChildren}</>;
+  };
+
   return (
     <button type={type} form={form} className={parentClass} onClick={onClick}>
       <PrependIcon />
-      {label ? label : children}
+      <ButtonText />
       <AppendIcon />
     </button>
   );

@@ -18,9 +18,18 @@ export default {
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
+export const ButtonIcon = Template.bind({});
 
 Primary.args = {
   color: "primary",
   size: "base",
   variant: "filled",
+  label: "Im Label",
+};
+
+ButtonIcon.args = {
+  color: "primary",
+  size: "base",
+  variant: "filled",
+  label: <Icon path={mdiLock}></Icon>,
 };

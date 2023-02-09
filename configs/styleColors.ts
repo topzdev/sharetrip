@@ -1,7 +1,8 @@
 import classNames from "classnames";
 
 export type Colors =
-  | "default"
+  | "black"
+  | "white"
   | "primary"
   | "secondary"
   | "error"
@@ -12,11 +13,18 @@ export type Colors =
 export type Variants = "filled" | "outlined" | "tonal" | "text";
 
 export const colorsVarianState = {
-  default: {
+  black: {
     outlined: "hover:bg-white active:bg-white hover:bg-black",
     filled: "hover:bg-white active:bg-white hover:bg-white active:bg-white",
     tonal: "hover:bg-white/[8%] active:bg-white/[12%] hover:bg-black",
-    text: "hover:bg-black",
+    text: "",
+  },
+
+  white: {
+    outlined: "hover:bg-lblack active:bg-black hover:bg-white",
+    filled: "hover:bg-black active:bg-black hover:bg-black active:bg-black",
+    tonal: "hover:bg-black/[8%] active:bg-black/[12%] hover:bg-white",
+    text: "",
   },
 
   primary: {
@@ -81,11 +89,17 @@ export const colorsVarianState = {
 };
 
 export const colorsVariants = {
-  default: {
+  black: {
     outlined: "bg-white text-black",
     filled: "text-black border-white bg-white",
-    tonal: "border-transparent bg-white/10 text-black",
+    tonal: "border-transparent bg-blac/10 text-black",
     text: "border-transparent text-black",
+  },
+  white: {
+    outlined: "bg-black text-white",
+    filled: "text-white border-white bg-white",
+    tonal: "border-transparent bg-black/10 text-white",
+    text: "border-transparent text-white",
   },
   primary: {
     outlined: "border-primary-500 text-primary-500",
@@ -132,7 +146,8 @@ export const colorsVariants = {
 };
 
 type ColorsVariants = {
-  default: Record<Variants, string>;
+  black: Record<Variants, string>;
+  white: Record<Variants, string>;
   disabled: Record<Variants, string>;
   primary: Record<Variants, string>;
   secondary: Record<Variants, string>;
@@ -144,7 +159,8 @@ type ColorsVariants = {
 
 const merger = () => {
   let temp = {
-    default: {},
+    black: {},
+    white: {},
     disabled: {},
     primary: {},
     secondary: {},
