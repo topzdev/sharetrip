@@ -106,8 +106,6 @@ const PhotoPreview: React.FC<Props> = ({
         <Icon path={mdiDotsVertical}></Icon>
       </Button>
 
-      <Menu></Menu>
-
       {photo.src && (
         <Image
           className="h-full w-full object-cover object-center select-none"

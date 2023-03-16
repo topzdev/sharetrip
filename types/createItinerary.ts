@@ -19,6 +19,18 @@ export type CreatePhoto = {
   deletable: boolean;
 };
 
+export type ItineraryInfo = {
+  id: number;
+  locations: string;
+  title: string;
+  description: string;
+  stopsCount: number;
+  tipsCount: number;
+  spentAmount: number;
+  imageCount: number;
+  image: string;
+};
+
 export type CreateItineraryForm = {
   categories: number[];
   information: {
@@ -30,6 +42,7 @@ export type CreateItineraryForm = {
     introduction: string;
   };
   photos: CreatePhoto[];
+  itineraries: ItineraryInfo[];
 };
 
 export type PhotoPreviewType = "full" | "main" | "post" | "default";

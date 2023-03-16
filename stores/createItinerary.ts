@@ -55,6 +55,35 @@ class CreateItineraryStore {
         deletable: true,
       },
     ],
+
+    itineraries: [
+      {
+        id: 1,
+        locations: "Saint Petersburg, Russia",
+        title: "The Enchanted City of Russia",
+        description:
+          "Regarded as among the most beautiful cities in Europe, the former capital will definitely leave you in awe.",
+        stopsCount: 3,
+        tipsCount: 4,
+        spentAmount: 13400,
+        imageCount: 12,
+        image:
+          "https://images.unsplash.com/photo-1545506523-9b0adeb12f9d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1026&q=80",
+      },
+      {
+        id: 2,
+        locations: "Moscow Russia",
+        title: "Moscow Russia",
+        description:
+          "Regarded as among the most beautiful cities in Europe, the former capital will definitely leave you in awe.",
+        stopsCount: 3,
+        tipsCount: 4,
+        spentAmount: 13400,
+        imageCount: 12,
+        image:
+          "https://images.unsplash.com/photo-1545506523-9b0adeb12f9d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1026&q=80",
+      },
+    ],
   };
   loading: boolean = false;
   steps: CreateStep[] = [
@@ -104,7 +133,7 @@ class CreateItineraryStore {
             title: itinerary.title,
             active: false,
             done: false,
-            locked: true,
+            locked: false,
             to: itinerary.raw,
           },
         ],
