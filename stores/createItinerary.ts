@@ -84,6 +84,8 @@ class CreateItineraryStore {
           "https://images.unsplash.com/photo-1545506523-9b0adeb12f9d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1026&q=80",
       },
     ],
+
+    tipsAndReminders: [{ id: 1, emoji: "🔑", text: "Don’t drive when drunk" }],
   };
   loading: boolean = false;
   steps: CreateStep[] = [
@@ -159,7 +161,7 @@ class CreateItineraryStore {
             title: tipsReminder.title,
             active: false,
             done: false,
-            locked: true,
+            locked: false,
             to: tipsReminder.raw,
           },
           {
@@ -320,6 +322,12 @@ class CreateItineraryStore {
 
   setPhotos(photos: CreateItineraryForm["photos"]) {
     this.form.photos = photos;
+  }
+
+  setTipsAndReminders(
+    tipsAndReminders: CreateItineraryForm["tipsAndReminders"]
+  ) {
+    this.form.tipsAndReminders = tipsAndReminders;
   }
 }
 

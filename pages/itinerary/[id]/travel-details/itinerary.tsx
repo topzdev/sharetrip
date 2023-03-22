@@ -5,7 +5,7 @@ import CreatePageHeader from "@/components/pages/create/layout/CreatePageHeader"
 import { mdiCloudUploadOutline } from "@mdi/js";
 import Icon from "@mdi/react";
 import React, { ReactElement } from "react";
-import ItineraryList from "../itinerary/ItineraryList";
+import ItineraryList from "../../../../components/pages/create/itinerary/ItineraryList";
 
 type Props = {};
 

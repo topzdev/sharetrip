@@ -20,7 +20,7 @@ export type CreatePhoto = {
 };
 
 export type ItineraryInfo = {
-  id: number;
+  id?: number;
   locations: string;
   title: string;
   description: string;
@@ -29,6 +29,12 @@ export type ItineraryInfo = {
   spentAmount: number;
   imageCount: number;
   image: string;
+};
+
+export type TipAndReminder = {
+  id?: number;
+  emoji: string;
+  text: string;
 };
 
 export type CreateItineraryForm = {
@@ -43,6 +49,7 @@ export type CreateItineraryForm = {
   };
   photos: CreatePhoto[];
   itineraries: ItineraryInfo[];
+  tipsAndReminders: TipAndReminder[];
 };
 
 export type PhotoPreviewType = "full" | "main" | "post" | "default";
