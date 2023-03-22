@@ -9,12 +9,11 @@ import { Merriweather, Open_Sans, Work_Sans } from "@next/font/google";
 
 const merriweather = Merriweather({
   variable: "--font-merriweather",
-  weight: ["300", "400"],
+  weight: "400",
 });
 
-const workSans = Open_Sans({
+const workSans = Work_Sans({
   variable: "--font-work-sans",
-  weight: ["400", "500", "600", "700"],
 });
 
 type ComponentWithPageLayout = AppProps & {
