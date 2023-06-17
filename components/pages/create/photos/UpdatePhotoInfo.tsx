@@ -1,3 +1,5 @@
+"use client";
+
 import Button from "@/components/buttons/Button";
 import SideDialog from "@/components/dialogs/SideDialog";
 import Textarea from "@/components/forms/Textarea";
@@ -71,7 +73,8 @@ const UpdatePhotoInfo: React.FC<Props> = ({
             />
           </div>
         );
-      }}>
+      }}
+    >
       <form>
         <div className="flex flex-col gap-3">
           <Textfield
@@ -114,7 +117,8 @@ const UpdatePhotoInfo: React.FC<Props> = ({
             className="col-span-auto self-start"
             label="Delete"
             color="error"
-            onClick={onDelete}></Button>
+            onClick={onDelete}
+          ></Button>
         </div>
       </form>
     </SideDialog>

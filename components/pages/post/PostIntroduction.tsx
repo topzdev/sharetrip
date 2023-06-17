@@ -1,7 +1,7 @@
 import PostsSection from "./parts/PostSection";
 import { DetailedPost } from "@/types/data";
 import { getPost } from "api/post";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { useQuery } from "react-query";
 

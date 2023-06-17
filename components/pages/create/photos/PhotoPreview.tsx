@@ -1,6 +1,7 @@
+"use client";
+
 import Button from "@/components/buttons/Button";
 import Chip from "@/components/chips/Chip";
-import Menu from "@/components/menu/Menu";
 import { CreatePhoto, PhotoPreviewType } from "@/types/createItinerary";
 import { mdiDotsVertical } from "@mdi/js";
 import Icon from "@mdi/react";
@@ -94,7 +95,8 @@ const PhotoPreview: React.FC<Props> = ({
         height,
         transformOrigin: "0 0",
       }}
-      className={finalClassNames}>
+      className={finalClassNames}
+    >
       {!isDragging && <PhotoTopTag type={type} />}
 
       <Button
@@ -102,7 +104,8 @@ const PhotoPreview: React.FC<Props> = ({
         variant="text"
         color="white"
         size="xl"
-        icon>
+        icon
+      >
         <Icon path={mdiDotsVertical}></Icon>
       </Button>
 

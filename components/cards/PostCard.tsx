@@ -1,3 +1,5 @@
+"use client";
+
 import React, { FunctionComponent } from "react";
 import { Post } from "@/types/data";
 import Link from "next/link";
@@ -31,25 +33,29 @@ const PostCard: FunctionComponent<PostCardProps> = ({ data }) => {
       <div className="h-[290px] w-[200px] relative overflow-hidden rounded-2xl">
         <Link
           className="flex h-full w-full before:block before:absolute before:left-0 before:top-0 before:w-full before:h-full before:inset-1 before:bg-gradient-to-b before:from-black before:to-transparent before:opacity-20"
-          href={postLink}>
+          href={postLink}
+        >
           <Image
             className="object-cover object-center"
             src={postImage}
             alt={postTitle}
             width={300}
-            height={500}></Image>
+            height={500}
+          ></Image>
         </Link>
 
         <Link
           className="flex items-start text-white absolute top-2 px-2"
-          href={userLink}>
+          href={userLink}
+        >
           <div className="block min-w-[30px] min-h-[30px] max-h-[30px] max-w-[30px] rounded-full overflow-hidden mr-2">
             <Image
               className="object-cover object-center min-h-[30px]"
               src={userProfile}
               alt={fullName}
               height={50}
-              width={50}></Image>
+              width={50}
+            ></Image>
           </div>
 
           <div>
@@ -66,7 +72,8 @@ const PostCard: FunctionComponent<PostCardProps> = ({ data }) => {
       <div className="max-w-[200px] mt-2 font-serif">
         <p
           className="max-w-full truncate text-sm text-primary mb-1"
-          title={location}>
+          title={location}
+        >
           {location}
         </p>
         <Link href={postLink}>

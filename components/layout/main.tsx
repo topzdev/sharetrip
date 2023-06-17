@@ -1,3 +1,5 @@
+"use client";
+
 import React, { FunctionComponent } from "react";
 import AppNavbar from "@/components/layout/common/AppNavbar";
 type Props = {

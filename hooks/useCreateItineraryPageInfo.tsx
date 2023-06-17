@@ -1,12 +1,14 @@
 import pageRoutes from "@/configs/pageRoutes";
-import { useRouter } from "next/router";
+import { useRouter, useParams } from "next/navigation";
 import { useMemo } from "react";
 
 const useCreateItineraryPageInfo = () => {
+  const params = useParams();
+
   const router = useRouter();
   const itineraryId = useMemo(
-    () => parseInt(router.query.id as string),
-    [router.query.id]
+    () => parseInt((params && params.id) as string),
+    [params && params.id]
   );
 
   const generateBaseLink = (to?: string) => {

@@ -1,19 +1,20 @@
-import "../styles/globals.css";
 import "@/styles/react-datepicker.css";
 import type { AppProps } from "next/app";
-import React, { useState } from "react";
-import { NextPage } from "next";
+import { useState } from "react";
 import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
+import "../styles/globals.css";
 
-import { Merriweather, Open_Sans, Work_Sans } from "@next/font/google";
+import { Merriweather, Work_Sans } from "@next/font/google";
 
 const merriweather = Merriweather({
   variable: "--font-merriweather",
   weight: "400",
+  subsets: ["latin"],
 });
 
 const workSans = Work_Sans({
   variable: "--font-work-sans",
+  subsets: ["latin"],
 });
 
 type ComponentWithPageLayout = AppProps & {

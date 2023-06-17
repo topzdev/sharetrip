@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import classnames from "classnames";
 import { error } from "console";

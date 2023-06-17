@@ -1,3 +1,5 @@
+"use client";
+
 import React, { FunctionComponent } from "react";
 import PostCard from "@/components/cards/PostCard";
 import { Post } from "@/types/data";

@@ -1,3 +1,5 @@
+"use client";
+
 import { ItineraryInfo } from "@/types/createItinerary";
 import React from "react";
 import Image from "next/image";
@@ -40,7 +42,8 @@ const ItineraryCard = ({ data, index }: Props) => {
             size="sm"
             variant="tonal"
             color="white"
-            label={imageCountText(data.imageCount)}></Chip>
+            label={imageCountText(data.imageCount)}
+          ></Chip>
         </div>
 
         <div className="flex flex-col ml-4">

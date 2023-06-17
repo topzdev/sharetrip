@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import InputWrapper, { InputProps } from "./InputWrapper";
 import CustomDatepicker from "react-datepicker";

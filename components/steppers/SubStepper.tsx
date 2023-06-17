@@ -1,3 +1,5 @@
+"use client";
+
 import React, { ReactElement, useEffect, useState } from "react";
 import { Icon } from "@mdi/react";
 import { mdiLock, mdiCheckBold, mdiMenuRight } from "@mdi/js";

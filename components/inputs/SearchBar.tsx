@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 
 const SearchBar = () => {
@@ -27,7 +29,8 @@ const SearchBar = () => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6 stroke-slate-700">
+          className="w-6 h-6 stroke-slate-700"
+        >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"

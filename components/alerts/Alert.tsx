@@ -1,3 +1,5 @@
+"use client";
+
 import { colorsVariants, colorsVariantWithState } from "@/configs/styleColors";
 import {
   mdiAlert,
@@ -104,7 +106,8 @@ const Alert: React.FC<Props> = ({
             onClick={() => {
               // _setShow(false);
               onClose();
-            }}></Button>
+            }}
+          ></Button>
         )}
       </>
     );

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import InputWrapper, { InputProps } from "./InputWrapper";
 

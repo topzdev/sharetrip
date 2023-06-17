@@ -1,3 +1,5 @@
+"use client";
+
 import { photoDefault } from "@/configs/defaultValues";
 import { CreatePhotoContext } from "@/contexts/CreatePhotoContext";
 import photos from "@/pages/itinerary/[id]/travel-details/photos";
@@ -108,11 +110,13 @@ const PhotoSortable: React.FC<PhotoSortableProps> = ({}) => {
       onDragStart={handleDragStart}
       onDragCancel={handleDragCancel}
       sensors={sensors}
-      id="photoForm">
+      id="photoForm"
+    >
       <div className="grid grid-cols-6 gap-3">
         <SortableContext
           items={photos.map((item) => item.id as string)}
-          strategy={rectSortingStrategy}>
+          strategy={rectSortingStrategy}
+        >
           {photos.map((item, idx) => {
             const type = photoPreviewType(idx);
             return (
@@ -155,7 +159,8 @@ const PhotoSortable: React.FC<PhotoSortableProps> = ({}) => {
                         key={index}
                         disabled
                         id="overlay"
-                        type={type}>
+                        type={type}
+                      >
                         {({ isDragging, isSorting }) => (
                           <PhotoPreview
                             isDragging={true}

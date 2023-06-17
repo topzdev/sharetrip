@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { Switch } from "@headlessui/react";
 import { InputProps } from "./InputWrapper";
@@ -67,7 +69,8 @@ function Toggle({
           onChange={onChange}
           className={`${
             checked ? checkSwitchClassnames : unCheckSwitchClassnames
-          } relative inline-flex h-6 w-11 items-center rounded-full`}>
+          } relative inline-flex h-6 w-11 items-center rounded-full`}
+        >
           <span
             className={`${
               checked ? "translate-x-6" : "translate-x-1"

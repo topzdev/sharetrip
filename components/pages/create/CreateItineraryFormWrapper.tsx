@@ -1,3 +1,5 @@
+"use client";
+
 import Alert from "@/components/alerts/Alert";
 import { AlertDefault } from "@/types/default";
 import React, { BaseSyntheticEvent } from "react";

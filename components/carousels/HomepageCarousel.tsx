@@ -1,3 +1,5 @@
+"use client";
+
 import dayjs from "dayjs";
 import Image from "next/image";
 import { FunctionComponent, useRef, useState } from "react";
@@ -29,7 +31,8 @@ const CarouselItem: FunctionComponent<CarouselItemProps> = ({ idx, data }) => {
       width={1920}
       height={1080}
       loading={idx !== 1 ? "lazy" : "eager"}
-      alt={data.title}></Image>
+      alt={data.title}
+    ></Image>
   );
 };
 
@@ -48,7 +51,8 @@ const CarouselInformtion: FunctionComponent<CarouselInformtionProps> = ({
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="stroke-primary w-8 h-8 mr-1">
+            className="stroke-primary w-8 h-8 mr-1"
+          >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -114,7 +118,8 @@ const HomepageCarousel = () => {
   return (
     <div
       className="homepage-carousel h-screen w-full overflow-hidden relative"
-      id="homepageCarousel">
+      id="homepageCarousel"
+    >
       <Swiper
         className="h-full w-full !absolute z-10"
         loop
@@ -129,7 +134,8 @@ const HomepageCarousel = () => {
         modules={modules}
         autoplay={autoplayOpt}
         slidesPerView={slidesPerView}
-        onSlideChange={onSlideChange}>
+        onSlideChange={onSlideChange}
+      >
         {data.map((item, idx) => (
           <SwiperSlide className="h-full w-full relative" key={item.id}>
             <CarouselItem data={item} idx={idx}></CarouselItem>

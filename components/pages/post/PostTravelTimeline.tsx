@@ -1,6 +1,6 @@
 import { DetailedPost } from "@/types/data";
 import { getPost } from "api/post";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { useQuery } from "react-query";
 import TravelTimelineCard from "./cards/TravelTimelineCard";
@@ -27,7 +27,8 @@ const PostTravelTimeline: React.FC<Props> = ({}) => {
             <TravelTimelineCard
               slug={data.slug}
               data={item}
-              idx={idx}></TravelTimelineCard>
+              idx={idx}
+            ></TravelTimelineCard>
           </li>
         ))}
       </ul>

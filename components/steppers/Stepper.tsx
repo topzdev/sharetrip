@@ -1,3 +1,5 @@
+"use client";
+
 import React, {
   Component,
   ReactElement,
@@ -112,7 +114,8 @@ function Stepper({
     return (
       <div className="flex justify-center min-h-[50px] w-[40px]">
         <div
-          className={`h-full border-l-[3px] border-dashed ${style.dash}`}></div>
+          className={`h-full border-l-[3px] border-dashed ${style.dash}`}
+        ></div>
       </div>
     );
   };
@@ -121,7 +124,8 @@ function Stepper({
     return (
       <>
         <div
-          className={`flex h-[40px] w-[40px] justify-center items-center font-bold text-1xl mr-2 rounded-full border-[3px] relative ${style.circle}`}>
+          className={`flex h-[40px] w-[40px] justify-center items-center font-bold text-1xl mr-2 rounded-full border-[3px] relative ${style.circle}`}
+        >
           <CircleTextIcon></CircleTextIcon>
           <LockStatus></LockStatus>
         </div>

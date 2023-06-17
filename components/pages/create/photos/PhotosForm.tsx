@@ -1,3 +1,5 @@
+"use client";
+
 import { CreatePhotoContext } from "@/contexts/CreatePhotoContext";
 import { observer } from "mobx-react-lite";
 import React, { useContext } from "react";
@@ -27,7 +29,8 @@ const PhotosForm: React.FC<Props> = ({}) => {
       <CreateItineraryFormWrapper
         onSubmit={onSubmit}
         alert={alert}
-        closeAlert={closeAlert}>
+        closeAlert={closeAlert}
+      >
         <PhotoSortable />
       </CreateItineraryFormWrapper>
       <UpdatePhotoInfo

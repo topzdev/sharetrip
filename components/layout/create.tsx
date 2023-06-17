@@ -1,9 +1,10 @@
+"use client";
+
 import React, { FunctionComponent, useEffect } from "react";
-import { Merriweather, Work_Sans } from "@next/font/google";
 import CreateSidebar from "../pages/create/layout/CreateSidebar";
 import CreateActionBar from "../pages/create/layout/CreateActionBar";
 import CreatePageBar from "../pages/create/layout/CreatePageBar";
-import { useRouter } from "next/router";
+import { useRouter, usePathname } from "next/navigation";
 import { observer } from "mobx-react-lite";
 import createItineraryStore from "@/stores/createItinerary";
 import useCreateItineraryPageInfo from "@/hooks/useCreateItineraryPageInfo";
@@ -15,17 +16,18 @@ type Props = {
 
 const CreateLayout: FunctionComponent<Props> = ({ children }) => {
   const router = useRouter();
+  const pathname = usePathname();
   const current = createItineraryStore.current;
   const mergeSteps = createItineraryStore.mergeSteps;
   const { generateBaseLink, itineraryId } = useCreateItineraryPageInfo();
 
   useEffect(() => {
     mergeSteps.forEach((item, idx) => {
-      if (router.asPath.includes(item.to)) {
+      if (pathname && pathname.includes(item.to)) {
         createItineraryStore.setCurrentStep(idx);
       }
     });
-  }, [router.asPath]);
+  }, [pathname]);
 
   useEffect(() => {
     if (current.to && itineraryId) {

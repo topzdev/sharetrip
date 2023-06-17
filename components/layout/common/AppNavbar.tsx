@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import React, {
   DOMElement,
@@ -70,7 +72,8 @@ const AppNavbar: FunctionComponent<AppNavbarProps> = ({
           src={`/images/profiles/${curentUser.profile}`}
           width={100}
           height={100}
-          alt={`${curentUser.firstname} ${curentUser.lastname}`}></Image>
+          alt={`${curentUser.firstname} ${curentUser.lastname}`}
+        ></Image>
       </div>
     </div>
   );

@@ -1,3 +1,5 @@
+"use client";
+
 import { GlobeAsiaAustraliaIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import React from "react";
@@ -27,7 +29,8 @@ const SignUpBanners = () => {
         src={"/images/banners/signup-banner.jpg"}
         alt="Sign up to us Wanderers"
         height={500}
-        width={1920}></Image>
+        width={1920}
+      ></Image>
     </div>
   );
 };

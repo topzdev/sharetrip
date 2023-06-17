@@ -1,3 +1,5 @@
+"use client";
+
 import Button from "@/components/buttons/Button";
 import React from "react";
 import { observer } from "mobx-react-lite";

@@ -1,6 +1,6 @@
 import { DetailedPost } from "@/types/data";
 import { getPost } from "api/post";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { usePostStore } from "stores/post";
@@ -24,7 +24,8 @@ const PostHeading: React.FC<Props> = ({}) => {
   return (
     <div
       className={`bg-neutral-900 text-white h-screen`}
-      style={{ paddingTop: `${appbarHeight}px` }}>
+      style={{ paddingTop: `${appbarHeight}px` }}
+    >
       <PostHeadingGallery images={data?.images} />
       <PostHeadingInformation info={data} />
     </div>

@@ -1,3 +1,4 @@
+"use client";
 import Alert from "@/components/alerts/Alert";
 import BoxSelect from "@/components/forms/BoxSelect";
 import { MAX_SELECT_CATEGORIES } from "@/configs/createConfigs";
@@ -73,7 +74,8 @@ const CategoryList = () => {
     <CreateItineraryFormWrapper
       onSubmit={onSubmit}
       alert={alert}
-      closeAlert={closeAlert}>
+      closeAlert={closeAlert}
+    >
       <div className="grid grid-cols-6 gap-x-2 gap-y-5">
         {categoriesItems.map((item) => {
           const active =

@@ -1,3 +1,5 @@
+"use client";
+
 import AppLogo from "@/components/layout/common/AppLogo";
 import Stepper from "@/components/steppers/Stepper";
 import SubStepper from "@/components/steppers/SubStepper";
@@ -15,7 +17,8 @@ const TopDashedCorner = observer(() => {
 
   return (
     <div
-      className={`border-dashed border-t-[3px] border-r-[3px] ${color} rounded-tr-[38px] h-[119px] w-[52px] absolute left-0`}></div>
+      className={`border-dashed border-t-[3px] border-r-[3px] ${color} rounded-tr-[38px] h-[119px] w-[52px] absolute left-0`}
+    ></div>
   );
 });
 
@@ -49,7 +52,8 @@ const BottomDashedStraight = observer(() => {
 
   return (
     <div
-      className={`border-dashed border-r-[3px] ${color} h-full w-[52px]  -ml-[80px]`}></div>
+      className={`border-dashed border-r-[3px] ${color} h-full w-[52px]  -ml-[80px]`}
+    ></div>
   );
 });
 
@@ -77,7 +81,8 @@ const Sidebar = (props: Props) => {
               done={createItineraryStore.checkCompleted(idx)}
               locked={createItineraryStore.checkLocked(idx)}
               title={item.title}
-              to={generateBaseLink(item.to)}>
+              to={generateBaseLink(item.to)}
+            >
               <>
                 {item.subSteps &&
                   item.subSteps.map((subItem) => (
@@ -90,7 +95,8 @@ const Sidebar = (props: Props) => {
                       locked={subItem.locked}
                       className="mb-1"
                       to={generateBaseLink(subItem.to)}
-                      title={subItem.title}></SubStepper>
+                      title={subItem.title}
+                    ></SubStepper>
                   ))}
               </>
             </Stepper>

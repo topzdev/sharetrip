@@ -1,12 +1,14 @@
-import React, { createContext, useEffect, useState } from "react";
+"use client";
+
+import { alertDefault } from "@/configs/defaultValues";
+import { photosSchema } from "@/configs/fieldSchema/createItinerary";
 import { CreateItineraryForm, CreatePhoto } from "@/types/createItinerary";
-import { AlertDefault, ChildrenProps } from "@/types/default";
+import { AlertDefault } from "@/types/default";
+import { arrayMove } from "@dnd-kit/sortable";
+import { yupResolver } from "@hookform/resolvers/yup";
+import React, { createContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import createItineraryStore from "stores/createItinerary";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { photosSchema } from "@/configs/fieldSchema/createItinerary";
-import { alertDefault } from "@/configs/defaultValues";
-import { arrayMove } from "@dnd-kit/sortable";
 
 interface ContextProps {
   photos: CreatePhoto[];
@@ -153,7 +155,8 @@ const CreatePhotoProvider: React.FC<{ children: React.ReactNode }> = ({
         setMainCover,
         setPostCover,
         currentIndex,
-      }}>
+      }}
+    >
       {children}
     </CreatePhotoContext.Provider>
   );

@@ -1,3 +1,5 @@
+"use client";
+
 import { CreatePhoto, PhotoPreviewType } from "@/types/createItinerary";
 import { ChildrenProps } from "@/types/default";
 import { useSortable } from "@dnd-kit/sortable";

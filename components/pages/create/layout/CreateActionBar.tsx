@@ -1,3 +1,5 @@
+"use client";
+
 import Button from "@/components/buttons/Button";
 import { observer } from "mobx-react-lite";
 import createItineraryStore from "stores/createItinerary";
@@ -13,7 +15,8 @@ const CreateActionBar = (props: Props) => {
       <div className="h-[5px] w-full bg-slate-100 flex">
         <div
           className="block bg-primary transition-all ease-in"
-          style={{ width: `${progress}%` }}></div>
+          style={{ width: `${progress}%` }}
+        ></div>
       </div>
 
       <div className="flex w-full py-4 px-5">

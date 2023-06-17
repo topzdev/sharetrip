@@ -1,3 +1,4 @@
+"use client";
 import DateRangePicker from "@/components/forms/DateRangePicker";
 import Textarea from "@/components/forms/Textarea";
 import Textfield from "@/components/forms/Textfield";

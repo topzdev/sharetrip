@@ -1,3 +1,5 @@
+"use client";
+
 import { ChildrenProps } from "@/types/default";
 import { Transition, Dialog } from "@headlessui/react";
 import React, { Fragment } from "react";
@@ -26,7 +28,8 @@ const SideDialog: React.FC<SideDialogProps> = ({
         as="div"
         className="relative z-10"
         open={isOpen}
-        onClose={closeModal}>
+        onClose={closeModal}
+      >
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -34,7 +37,8 @@ const SideDialog: React.FC<SideDialogProps> = ({
           enterTo="opacity-100"
           leave="ease-in duration-200"
           leaveFrom="opacity-100"
-          leaveTo="opacity-0">
+          leaveTo="opacity-0"
+        >
           <div className="fixed inset-0 bg-black bg-opacity-25" />
         </Transition.Child>
 
@@ -47,11 +51,13 @@ const SideDialog: React.FC<SideDialogProps> = ({
               enterTo="opacity-100"
               leave="ease-in duration-200"
               leaveFrom="opacity-100"
-              leaveTo="opacity-0">
+              leaveTo="opacity-0"
+            >
               <Dialog.Panel className="w-full flex flex-col max-w-md transform overflow-hidden bg-white p-6 text-left align-middle shadow-xl transition-all h-screen">
                 <Dialog.Title
                   as="h3"
-                  className="text-xl font-bold text-slate-900">
+                  className="text-xl font-bold text-slate-900"
+                >
                   {title}
                 </Dialog.Title>
 
@@ -71,7 +77,8 @@ const SideDialog: React.FC<SideDialogProps> = ({
                       label="Close"
                       color="secondary"
                       className="ml-auto"
-                      onClick={closeModal}></Button>
+                      onClick={closeModal}
+                    ></Button>
                   )}
                 </div>
               </Dialog.Panel>

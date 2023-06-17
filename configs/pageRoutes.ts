@@ -36,7 +36,7 @@ export default {
   },
 
   create: (id?: number | null) => {
-    const parentPath = `/itinerary/${id}`;
+    const parentPath = `/create/${id}`;
 
     return {
       title: "Create Itinerary",

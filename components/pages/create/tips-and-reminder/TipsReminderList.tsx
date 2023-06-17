@@ -1,3 +1,5 @@
+"use client";
+
 import Button from "@/components/buttons/Button";
 import Textfield from "@/components/forms/Textfield";
 import { informationSchema } from "@/configs/fieldSchema/createItinerary";
@@ -42,13 +44,15 @@ const TipsReminderList = (props: Props) => {
               <Textfield
                 label={"Emoji"}
                 name="emoji"
-                value={item.emoji}></Textfield>
+                value={item.emoji}
+              ></Textfield>
             </div>
             <div className="col-span-8">
               <Textfield
                 label={"Tips And Reminder"}
                 name="tipsAndReminder"
-                value={item.text}></Textfield>
+                value={item.text}
+              ></Textfield>
             </div>
             <div className="col-span-2 flex items-center">
               <Button color="error" size="xl" icon variant="tonal">

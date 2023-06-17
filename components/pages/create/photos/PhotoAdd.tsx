@@ -1,3 +1,5 @@
+"use client";
+
 import { PhotoPreviewType } from "@/types/createItinerary";
 import { mdiImagePlusOutline, mdiPlus } from "@mdi/js";
 import Icon from "@mdi/react";
@@ -17,7 +19,8 @@ const PhotoAdd: React.FC<PhotoAddProps> = ({ handleFileChange, type }) => {
   return (
     <div
       className="relative p-4 border-2 border-dashed border-slate-200 hover:border-primary-500 transition-colors ease-in rounded-md overflow-hidden h-full cursor-pointer flex flex-col items-center justify-center text-center bg-slate-100 hover:bg-primary-50/10 "
-      style={{ minHeight: height, maxHeight: height, height }}>
+      style={{ minHeight: height, maxHeight: height, height }}
+    >
       <input
         title="Drag here or Browse to upload photo"
         ref={fileRef}
